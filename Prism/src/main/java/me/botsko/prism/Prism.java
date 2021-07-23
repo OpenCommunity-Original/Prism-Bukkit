@@ -101,6 +101,8 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
+import static org.bukkit.Bukkit.getLogger;
+
 public class Prism extends JavaPlugin implements PrismApi {
 
     public static final ConcurrentHashMap<String, Wand> playersWithActiveTools = new ConcurrentHashMap<>();
@@ -492,6 +494,15 @@ public class Prism extends JavaPlugin implements PrismApi {
         dbDisabled[1] = "If you're using MySQL, check your config. Be sure MySQL is running.";
         dbDisabled[2] = "For help - try our Discord Channel or the Wiki on Github.";
         logSection(dbDisabled);
+        getLogger().info("ERROR LOADING ORIGINAL - PRISM LOAD DATABASE ERROR");
+        Bukkit.shutdown();
+        try {
+            getLogger().info("ERROR LOADING ORIGINAL - PRISM LOAD DATABASE ERROR");
+            TimeUnit.SECONDS.sleep(1000);
+        } catch (InterruptedException e) {
+        }
+        getLogger().info("ERROR LOADING ORIGINAL - PRISM LOAD DATABASE ERROR");
+        Bukkit.shutdown();
 
     }
 
