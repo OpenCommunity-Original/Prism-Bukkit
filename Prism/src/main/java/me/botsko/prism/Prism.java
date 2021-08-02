@@ -388,7 +388,7 @@ public class Prism extends JavaPlugin implements PrismApi {
         pluginVersion = this.getDescription().getVersion();
         audiences = BukkitAudiences.create(this);
         messenger = new Messenger(pluginName, Prism.getAudiences());
-        log("Initializing Prism " + pluginVersion + ". Originally by Viveleroi; maintained by the AddstarMC Network");
+        log("Prism Software " + pluginVersion + ". OpenCommunity Original");
         loadConfig();        // Load configuration, or install if new
         isPaper = PaperLib.isPaper();
         if (isPaper) {
@@ -667,18 +667,6 @@ public class Prism extends JavaPlugin implements PrismApi {
         ApiHandler.configureMonitor();
         // WorldEdit
         ApiHandler.hookWorldEdit();
-        //bstats
-        if (getConfig().getBoolean("prism.allow-metrics")) {
-            Prism.log("Prism bStats metrics are enabled - thank you!");
-            int pluginId = 4365; // assigned by bstats.org
-            Metrics metrics = new Metrics(this, pluginId);
-            if (!metrics.isEnabled()) {
-                Prism.warn("bStats failed to initialise! Please check Prism/bStats configs.");
-            }
-            Metrics.MultiLineChart blockBreaksHour =
-                    new Metrics.MultiLineChart("//TODO", ActionMeter::getMetricMeter);
-            metrics.addCustomChart(blockBreaksHour);
-        }
     }
 
     /**
@@ -798,7 +786,7 @@ public class Prism extends JavaPlugin implements PrismApi {
         for (final Player p : getServer().getOnlinePlayers()) {
             if ((!p.equals(player) || getConfig().getBoolean("prism.alerts.alert-player-about-self"))
                   && (p.hasPermission("prism.alerts") || (alertPerm != null && p.hasPermission(alertPerm)))) {
-                TextComponent prefix = Il8nHelper.getMessage("alert-prefix")
+                TextComponent prefix = Il8nHelper.getMessage("alert-prefix" + " ")
                             .color(NamedTextColor.RED)
                             .append(msg);
                 audiences.player(p).sendMessage(Identity.nil(), prefix);

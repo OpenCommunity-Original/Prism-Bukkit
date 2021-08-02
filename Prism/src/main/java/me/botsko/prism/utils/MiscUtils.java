@@ -1,6 +1,7 @@
 package me.botsko.prism.utils;
 
 import com.google.common.base.CaseFormat;
+import me.botsko.prism.Il8nHelper;
 import me.botsko.prism.Prism;
 import me.botsko.prism.actionlibs.ActionMessage;
 import me.botsko.prism.actionlibs.QueryResult;
@@ -256,9 +257,10 @@ public class MiscUtils {
      * @return TextComponent
      */
     public static TextComponent getPreviousButton() {
-        return Component.text(" [<< Prev]")
+        return Component.text(" ")
+                .append(Il8nHelper.getMessage("result-prew"))
                 .color(TextColor.fromHexString("#ef9696"))
-                .hoverEvent(HoverEvent.showText(Component.text("Click to view the previous page")))
+                //.hoverEvent(HoverEvent.showText(Component.text("Click to view the previous page")))
                 .clickEvent(ClickEvent.runCommand("/pr pg p"));
     }
 
@@ -268,7 +270,7 @@ public class MiscUtils {
      * @return TextComponent
      */
     public static TextComponent getNextButton() {
-        return Component.text("           ")
+        return Component.text("")
                 .color(TextColor.fromHexString("#01a960"))
                 .append(MiscUtils::getNextButtonComponent);
     }
@@ -279,8 +281,9 @@ public class MiscUtils {
      * @return BaseComponent.
      */
     private static TextComponent getNextButtonComponent() {
-        return Component.text("[Next >>]")
-                .hoverEvent(HoverEvent.showText(Component.text("Click to view the next page")))
+        return Component.text("")
+                .append(Il8nHelper.getMessage("result-next"))
+                //.hoverEvent(HoverEvent.showText(Component.text("Click to view the next page")))
                 .color(TextColor.fromHexString("#01a960"))
                 .clickEvent(ClickEvent.runCommand("/pr pg n"));
     }
