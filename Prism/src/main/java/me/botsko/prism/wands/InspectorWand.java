@@ -94,7 +94,7 @@ public class InspectorWand extends QueryWandBase {
                                 .replace("<x>",loc.getBlockX())
                                 .replace("<y>",loc.getBlockY())
                                 .replace("<z>",loc.getBlockY())
-                                .build().colorIfAbsent(NamedTextColor.GOLD)));
+                                .build().colorIfAbsent(NamedTextColor.GRAY)));
                 if (results.getActionResults().size() > 5) {
                     Prism.messenger.sendMessage(player,
                             Prism.messenger.playerHeaderMsg(Il8nHelper.formatMessage("lookup.result.header",
