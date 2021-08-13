@@ -10,49 +10,25 @@ import me.botsko.prism.appliers.ChangeResultImpl;
 import me.botsko.prism.utils.EntityUtils;
 import me.botsko.prism.utils.InventoryUtils;
 import me.botsko.prism.utils.ItemUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.Color;
-import org.bukkit.DyeColor;
-import org.bukkit.FireworkEffect;
+import org.bukkit.*;
 import org.bukkit.FireworkEffect.Builder;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Jukebox;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.banner.PatternType;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.ItemFrame;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BannerMeta;
-import org.bukkit.inventory.meta.BookMeta;
-import org.bukkit.inventory.meta.EnchantmentStorageMeta;
-import org.bukkit.inventory.meta.FireworkEffectMeta;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.inventory.meta.*;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Objects;
 
 public class ItemStackAction extends GenericAction {
 
@@ -88,8 +64,9 @@ public class ItemStackAction extends GenericAction {
 
     /**
      * Set the item.
-     * @param item ItemStack
-     * @param quantity int
+     *
+     * @param item         ItemStack
+     * @param quantity     int
      * @param enchantments Map of enchants.
      */
     public void setItem(ItemStack item, int quantity, Map<Enchantment, Integer> enchantments) {
@@ -185,7 +162,7 @@ public class ItemStackAction extends GenericAction {
             List<Pattern> patterns = ((BannerMeta) meta).getPatterns();
             Map<String, String> stringyPatterns = new HashMap<>();
             patterns.forEach(
-                  pattern -> stringyPatterns.put(pattern.getPattern().getIdentifier(), pattern.getColor().name()));
+                    pattern -> stringyPatterns.put(pattern.getPattern().getIdentifier(), pattern.getColor().name()));
             actionData.bannerMeta = stringyPatterns;
         }
     }
@@ -362,6 +339,7 @@ public class ItemStackAction extends GenericAction {
 
     /**
      * ItemStack.
+     *
      * @return ItemStack
      */
     public ItemStack getItem() {
@@ -370,6 +348,7 @@ public class ItemStackAction extends GenericAction {
 
     /**
      * Nice name.
+     *
      * @return String
      */
     @Override

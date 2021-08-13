@@ -21,6 +21,7 @@ public class NearCommand implements SubHandler {
 
     /**
      * Constructor.
+     *
      * @param plugin Prism
      */
     public NearCommand(Prism plugin) {

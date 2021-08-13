@@ -3,45 +3,18 @@ package me.botsko.prism.listeners;
 import me.botsko.prism.Prism;
 import me.botsko.prism.actionlibs.ActionFactory;
 import me.botsko.prism.actionlibs.RecordingQueue;
-import me.botsko.prism.utils.DeathUtils;
-import me.botsko.prism.utils.InventoryUtils;
-import me.botsko.prism.utils.MaterialTag;
-import me.botsko.prism.utils.MiscUtils;
-import me.botsko.prism.utils.WandUtils;
+import me.botsko.prism.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Creeper;
-import org.bukkit.entity.EnderDragon;
-import org.bukkit.entity.Enderman;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Hanging;
-import org.bukkit.entity.ItemFrame;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
-import org.bukkit.entity.TNTPrimed;
-import org.bukkit.entity.Wither;
+import org.bukkit.entity.*;
 import org.bukkit.entity.minecart.PoweredMinecart;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.EntityBlockFormEvent;
-import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.entity.EntityBreakDoorEvent;
-import org.bukkit.event.entity.EntityChangeBlockEvent;
-import org.bukkit.event.entity.EntityDamageByBlockEvent;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.entity.EntityTargetEvent;
-import org.bukkit.event.entity.EntityUnleashEvent;
-import org.bukkit.event.entity.PlayerLeashEntityEvent;
-import org.bukkit.event.entity.PotionSplashEvent;
+import org.bukkit.event.entity.*;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.hanging.HangingBreakEvent.RemoveCause;
@@ -68,6 +41,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * Constructor.
+     *
      * @param plugin Plugin
      */
     public PrismEntityEvents(Prism plugin) {
@@ -76,6 +50,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * EntityDamageByEntityEvent.
+     *
      * @param event EntityDamageByEntityEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -113,6 +88,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * EntityDeathEvent.
+     *
      * @param event EntityDeathEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -308,6 +284,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * CreatureSpawnEvent.
+     *
      * @param event CreatureSpawnEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -324,6 +301,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * EntityTargetEvent.
+     *
      * @param event EntityTargetEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -341,6 +319,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * PlayerShearEntityEvent.
+     *
      * @param event PlayerShearEntityEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -353,6 +332,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * PlayerInteractAtEntityEvent.
+     *
      * @param event PlayerInteractAtEntityEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -421,6 +401,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * PlayerInteractEntityEvent.
+     *
      * @param event PlayerInteractEntityEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -482,6 +463,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * EntityBreakDoorEvent.
+     *
      * @param event EntityBreakDoorEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -495,6 +477,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * PlayerLeashEntityEvent.
+     *
      * @param event PlayerLeashEntityEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -507,6 +490,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * PlayerUnleashEntityEvent.
+     *
      * @param event PlayerUnleashEntityEvent.
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -519,6 +503,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * EntityUnleashEvent.
+     *
      * @param event EntityUnleashEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -532,6 +517,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * PotionSplashEvent.
+     *
      * @param event PotionSplashEvent.
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -564,6 +550,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * HangingPlaceEvent.
+     *
      * @param event HangingPlaceEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -651,6 +638,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * HangingBreakByEntityEvent.
+     *
      * @param event HangingBreakByEntityEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -693,6 +681,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * EntityChangeBlockEvent.
+     *
      * @param event EntityChangeBlockEvent
      */
 
@@ -743,6 +732,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * EntityBlockFormEvent.
+     *
      * @param event EntityBlockFormEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -755,7 +745,7 @@ public class PrismEntityEvents extends BaseListener {
         final BlockState newState = event.getNewState();
 
         if (event.getEntity() instanceof Player) {
-            final Player player = (Player)event.getEntity();
+            final Player player = (Player) event.getEntity();
             RecordingQueue.addToQueue(ActionFactory.createBlockChange("entity-form", loc, block.getType(),
                     block.getBlockData(), newState.getType(), newState.getBlockData(), player));
         } else {
@@ -767,6 +757,7 @@ public class PrismEntityEvents extends BaseListener {
 
     /**
      * EntityExplodeEvent.
+     *
      * @param event EntityExplodeEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -814,7 +805,7 @@ public class PrismEntityEvents extends BaseListener {
             }
             name = "magic";
         }
-        contructBlockEvent(action,name,event.blockList());
+        contructBlockEvent(action, name, event.blockList());
     }
 
     private String followTntTrail(Entity initial) {

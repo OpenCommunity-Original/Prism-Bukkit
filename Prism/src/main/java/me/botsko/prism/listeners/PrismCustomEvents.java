@@ -25,6 +25,7 @@ public class PrismCustomEvents implements Listener {
 
     /**
      * On Custom action.
+     *
      * @param event PrismCustomPlayerActionEvent.
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)

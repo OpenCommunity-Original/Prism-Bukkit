@@ -29,6 +29,7 @@ public class Il8nHelper {
 
     /**
      * Returns a TextComponent un-styled from the give key.
+     *
      * @param key String
      * @return TextComponent
      */
@@ -39,6 +40,7 @@ public class Il8nHelper {
 
     /**
      * Returns a raw string message.
+     *
      * @param key String
      * @return String
      */
@@ -56,7 +58,8 @@ public class Il8nHelper {
 
     /**
      * Produces a TexComponent that can accept typical java String.format type replacement before its created.
-     * @param key Il8n key
+     *
+     * @param key  Il8n key
      * @param args Object to insert.
      * @return TextComponent
      */

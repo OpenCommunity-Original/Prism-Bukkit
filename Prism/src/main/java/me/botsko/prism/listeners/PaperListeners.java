@@ -29,6 +29,7 @@ public class PaperListeners implements Listener {
 
     /**
      * React to a target hit event.
+     *
      * @param event the TargetHitEvent.
      */
     @EventHandler(priority = EventPriority.MONITOR)
@@ -40,12 +41,13 @@ public class PaperListeners implements Listener {
                 return;
             }
             Block block = event.getHitBlock();
-            RecordingQueue.addToQueue(ActionFactory.createBlock("target-hit",block,(Player) shooter));
+            RecordingQueue.addToQueue(ActionFactory.createBlock("target-hit", block, (Player) shooter));
         }
     }
 
     /**
      * TradeEvent - Paper Only.
+     *
      * @param event PlayerTradeEvent
      */
     @EventHandler(priority = EventPriority.MONITOR)
@@ -54,10 +56,10 @@ public class PaperListeners implements Listener {
         if (!Prism.getIgnore().event("player-trade", player)) {
             return;
         }
-        RecordingQueue.addToQueue(ActionFactory.createEntity("player-trade",event.getVillager(),player));
+        RecordingQueue.addToQueue(ActionFactory.createEntity("player-trade", event.getVillager(), player));
         ItemStack result = event.getTrade().getResult();
-        RecordingQueue.addToQueue(ActionFactory.createItemStack("item-receive",result,result.getAmount(),
-                -1,result.getEnchantments(),event.getVillager().getLocation(),player));
+        RecordingQueue.addToQueue(ActionFactory.createItemStack("item-receive", result, result.getAmount(),
+                -1, result.getEnchantments(), event.getVillager().getLocation(), player));
 
     }
 

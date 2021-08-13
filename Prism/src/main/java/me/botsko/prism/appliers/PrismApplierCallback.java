@@ -108,7 +108,7 @@ public class PrismApplierCallback implements ApplierCallback {
                 builder.append(Il8nHelper.getMessage("applier-undo-done"));
             }
         }
-        Prism.messenger.sendMessage(sender,builder.build());
+        Prism.messenger.sendMessage(sender, builder.build());
         // Notify shared players of previews
         for (final CommandSender sharedPlayer : result.getParameters().getSharedPlayers()) {
             Prism.messenger.sendMessage(sharedPlayer, Prism.messenger.playerHeaderMsg(

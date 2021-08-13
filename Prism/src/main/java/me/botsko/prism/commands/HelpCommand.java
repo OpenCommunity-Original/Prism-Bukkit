@@ -58,53 +58,53 @@ public class HelpCommand implements SubHandler {
         Audience sender = Prism.getAudiences().sender(s);
         if (failed) {
             sender.sendMessage(Identity.nil(),
-                  Prism.messenger.playerHeaderMsg(Il8nHelper.getMessage("prism-disabled-header")
-                        .color(NamedTextColor.GOLD))
-                        .append(Component.newline())
-                        .append(
-                              Prism.messenger.playerMsg(Il8nHelper.getMessage("prism-disabled-content"))
+                    Prism.messenger.playerHeaderMsg(Il8nHelper.getMessage("prism-disabled-header")
                                     .color(NamedTextColor.GOLD))
-                        .append(Component.newline())
-                        .append(
-                              Prism.messenger.playerSubduedHeaderMsg(Il8nHelper.getMessage("discord", ":")
-                                    .color(NamedTextColor.WHITE)
-                                    .append(Component.text(Il8nHelper.getRawMessage("discord-url")))))
-                        .append(Component.newline())
-                        .append(
-                              Prism.messenger.playerSubduedHeaderMsg(Il8nHelper.getMessage("wiki", ":")
-                                    .color(NamedTextColor.WHITE)
-                                    .append(Component.text(Il8nHelper.getRawMessage("wiki-url"))))));
+                            .append(Component.newline())
+                            .append(
+                                    Prism.messenger.playerMsg(Il8nHelper.getMessage("prism-disabled-content"))
+                                            .color(NamedTextColor.GOLD))
+                            .append(Component.newline())
+                            .append(
+                                    Prism.messenger.playerSubduedHeaderMsg(Il8nHelper.getMessage("discord", ":")
+                                            .color(NamedTextColor.WHITE)
+                                            .append(Component.text(Il8nHelper.getRawMessage("discord-url")))))
+                            .append(Component.newline())
+                            .append(
+                                    Prism.messenger.playerSubduedHeaderMsg(Il8nHelper.getMessage("wiki", ":")
+                                            .color(NamedTextColor.WHITE)
+                                            .append(Component.text(Il8nHelper.getRawMessage("wiki-url"))))));
             return;
         }
         TextComponent component = Prism.messenger.playerHeaderMsg(
-                Component.text("--- Basic Usage ---").color(NamedTextColor.GOLD))
+                        Component.text("--- Basic Usage ---").color(NamedTextColor.GOLD))
                 .append(Component.newline())
                 .append(Prism.messenger.playerSubduedHeaderMsg(Il8nHelper.getMessage("help-extended-message")))
                 .append(Component.newline());
         Stream<SubCommand> stream = Prism.getInstance().getCommands().getSubCommands().values().stream().distinct();
-        for (SubCommand command:stream.collect(Collectors.toList())) {
+        for (SubCommand command : stream.collect(Collectors.toList())) {
             if (command.getHelp().length > 1) {
                 int i = 0;
                 for (String message : command.getHelp()) {
                     if (i == 0) {
                         component = component.append(Prism.messenger.playerHelp(
-                                Arrays.toString(command.getAliases()), message)
-                                .clickEvent(ClickEvent.openUrl(command.getWebLink())))
+                                                Arrays.toString(command.getAliases()), message)
+                                        .clickEvent(ClickEvent.openUrl(command.getWebLink())))
                                 .append(Component.newline());
                     } else {
                         component = component.append(Prism.messenger.playerHelp("      |- ", message)
-                                .clickEvent(ClickEvent.openUrl(command.getWebLink())))
+                                        .clickEvent(ClickEvent.openUrl(command.getWebLink())))
                                 .append(Component.newline());
                     }
                     i++;
                 }
             } else {
                 component = component.append(Prism.messenger.playerHelp(
-                        Arrays.toString(command.getAliases()), command.getHelp()[0])
-                        .clickEvent(ClickEvent.openUrl(command.getWebLink())))
+                                        Arrays.toString(command.getAliases()), command.getHelp()[0])
+                                .clickEvent(ClickEvent.openUrl(command.getWebLink())))
                         .append(Component.newline());
             }
         }
-        sender.sendMessage(Identity.nil(),component);
+        sender.sendMessage(Identity.nil(), component);
     }
 }

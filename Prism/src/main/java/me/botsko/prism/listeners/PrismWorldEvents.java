@@ -19,6 +19,7 @@ public class PrismWorldEvents implements Listener {
 
     /**
      * StructureGrowEvent.
+     *
      * @param event StructureGrowEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -44,6 +45,7 @@ public class PrismWorldEvents implements Listener {
 
     /**
      * WorldLoadEvent.
+     *
      * @param event WorldLoadEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -58,9 +60,10 @@ public class PrismWorldEvents implements Listener {
 
     /**
      * Track portal creation events.
+     *
      * @param event PortalCreateEvent.
      */
-    @EventHandler(priority = EventPriority.MONITOR,ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onPortalCreate(final PortalCreateEvent event) {
         String type = "portal-create";
         if (!Prism.getIgnore().event(type, event.getWorld())) {

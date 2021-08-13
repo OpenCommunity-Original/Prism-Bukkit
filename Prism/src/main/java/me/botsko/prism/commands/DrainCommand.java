@@ -22,6 +22,7 @@ public class DrainCommand implements SubHandler {
 
     /**
      * Constructor.
+     *
      * @param plugin Prism
      */
     public DrainCommand(Prism plugin) {

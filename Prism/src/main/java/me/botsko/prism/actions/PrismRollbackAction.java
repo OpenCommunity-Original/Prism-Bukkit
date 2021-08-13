@@ -8,6 +8,7 @@ public class PrismRollbackAction extends BlockChangeAction {
 
     /**
      * Set the block change.
+     *
      * @param oldBlock block
      * @param newBlock block
      * @param parentId long

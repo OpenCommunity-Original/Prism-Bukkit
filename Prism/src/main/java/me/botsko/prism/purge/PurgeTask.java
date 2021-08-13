@@ -21,10 +21,10 @@ public class PurgeTask implements Runnable {
     /**
      * Used when we dont know the min max.
      *
-     * @param plugin Prism
-     * @param paramList List
+     * @param plugin         Prism
+     * @param paramList      List
      * @param purgeTickDelay int
-     * @param callback Callback
+     * @param callback       Callback
      */
     @SuppressWarnings("WeakerAccess")
     public PurgeTask(Prism plugin, CopyOnWriteArrayList<QueryParameters> paramList, int purgeTickDelay,
@@ -113,7 +113,7 @@ public class PurgeTask implements Runnable {
 
         if (!plugin.isEnabled()) {
             Prism.log("Can't schedule new purge tasks as plugin is now disabled. "
-                            + "If you're shutting down the server, ignore me.");
+                    + "If you're shutting down the server, ignore me.");
             return;
         }
 

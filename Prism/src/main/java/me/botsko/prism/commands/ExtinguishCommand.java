@@ -20,6 +20,7 @@ public class ExtinguishCommand implements SubHandler {
 
     /**
      * Constructor.
+     *
      * @param plugin Prism
      */
     public ExtinguishCommand(Prism plugin) {

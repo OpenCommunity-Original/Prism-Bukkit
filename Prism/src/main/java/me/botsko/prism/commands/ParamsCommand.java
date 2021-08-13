@@ -71,7 +71,7 @@ public class ParamsCommand implements SubHandler {
                 .append(Il8nHelper.getMessage("params-help-prefix")).append(Component.newline())
                 .append(Il8nHelper.getMessage("params-help-partial")).append(Component.newline())
                 .append(Il8nHelper.getMessage("params-help-actionlist")).append(Component.newline());
-        Prism.messenger.sendMessage(s,builder.build());
+        Prism.messenger.sendMessage(s, builder.build());
     }
 
     private static Component colourParamHelp(TextComponent message) {

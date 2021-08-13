@@ -5,11 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class PrismConfig extends ConfigBase {
 
@@ -279,7 +275,7 @@ public class PrismConfig extends ConfigBase {
         // Copy defaults
         config.options().copyDefaults(true);
         // save the defaults/config
-        super.write("config",config);
+        super.write("config", config);
 
         return config;
 

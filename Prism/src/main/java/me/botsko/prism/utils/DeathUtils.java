@@ -1,15 +1,7 @@
 package me.botsko.prism.utils;
 
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
-import org.bukkit.entity.Skeleton;
-import org.bukkit.entity.Tameable;
-import org.bukkit.entity.WitherSkeleton;
-import org.bukkit.entity.Wolf;
+import org.bukkit.entity.*;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
@@ -157,7 +149,7 @@ public class DeathUtils {
     /**
      * Determines the owner of a tamed wolf.
      *
-     * @param event  EntityDeathEvent
+     * @param event EntityDeathEvent
      * @return String
      */
     public static String getTameWolfOwner(EntityDeathEvent event) {

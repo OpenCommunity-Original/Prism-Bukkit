@@ -6,12 +6,7 @@ import me.botsko.prism.database.PrismDataSource;
 import me.botsko.prism.utils.IntPair;
 import org.apache.commons.lang.Validate;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.SQLWarning;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -53,10 +48,11 @@ public class SqlIdMapQuery implements IdMapQuery {
 
     /**
      * Find material and consume it.
-     * @param blockId int
+     *
+     * @param blockId    int
      * @param blockSubid int
-     * @param success BiConsumer
-     * @param failure Runnable.
+     * @param success    BiConsumer
+     * @param failure    Runnable.
      */
     public void findMaterial(int blockId, int blockSubid, BiConsumer<String, String> success, Runnable failure) {
         Validate.notNull(success, "Success callback cannot be null");
@@ -87,10 +83,11 @@ public class SqlIdMapQuery implements IdMapQuery {
 
     /**
      * Find ids and consume.
+     *
      * @param material String
-     * @param state state
-     * @param success Consumer
-     * @param failure Runnable
+     * @param state    state
+     * @param success  Consumer
+     * @param failure  Runnable
      */
     public void findIds(String material, String state, BiConsumer<Integer, Integer> success, Runnable failure) {
         Validate.notNull(material, "Material cannot be null");
@@ -127,9 +124,10 @@ public class SqlIdMapQuery implements IdMapQuery {
 
     /**
      * Find and consume.
+     *
      * @param material String
-     * @param success Consumer
-     * @param failure Runnable
+     * @param success  Consumer
+     * @param failure  Runnable
      */
     public void findAllIds(String material, Consumer<List<IntPair>> success, Runnable failure) {
         Validate.notNull(material, "Material cannot be null");
@@ -141,7 +139,7 @@ public class SqlIdMapQuery implements IdMapQuery {
         try (Connection conn = dataSource.getConnection()) {
             try (PreparedStatement st = conn.prepareStatement(query)) {
                 st.setString(1, material);
-                handleIdResult(st,success,failure);
+                handleIdResult(st, success, failure);
             }
         } catch (final SQLException e) {
             Prism.warn("Database connection error: ", e);
@@ -155,13 +153,14 @@ public class SqlIdMapQuery implements IdMapQuery {
 
     /**
      * Find partials.
-     * @param material String
+     *
+     * @param material  String
      * @param stateLike String
-     * @param success Consume
-     * @param failure Runnable
+     * @param success   Consume
+     * @param failure   Runnable
      */
     private void findAllIdsPartial(String material, String stateLike, Consumer<List<IntPair>> success,
-                                  Runnable failure) {
+                                   Runnable failure) {
         Validate.notNull(material, "Material cannot be null");
         Validate.notNull(success, "Success callback cannot be null");
         Validate.notNull(failure, "Failure callback cannot be null (use findAllIds(String, BiConsumer)");
@@ -199,10 +198,11 @@ public class SqlIdMapQuery implements IdMapQuery {
 
     /**
      * Build map.
-     * @param material String
-     * @param state state
-     * @param blockId id
-     * @param blockSubid  subid
+     *
+     * @param material   String
+     * @param state      state
+     * @param blockId    id
+     * @param blockSubid subid
      */
     public void map(String material, String state, int blockId, int blockSubid) {
         Validate.notNull(material, "Material cannot be null");
@@ -260,8 +260,9 @@ public class SqlIdMapQuery implements IdMapQuery {
 
     /**
      * map material to id.
+     *
      * @param material Material
-     * @param state State
+     * @param state    State
      * @return int.
      */
     public int mapAutoId(String material, String state) {

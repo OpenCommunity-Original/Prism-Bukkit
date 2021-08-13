@@ -2,11 +2,7 @@ package me.botsko.prism.utils;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.EntityEquipment;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.*;
 
 import java.util.EnumMap;
 import java.util.HashMap;
@@ -69,8 +65,9 @@ public class InventoryUtils {
 
     /**
      * Returns ItemStock for a Slot.
+     *
      * @param equipment Equipment
-     * @param slot Slot
+     * @param slot      Slot
      * @return ItemStack
      */
     public static ItemStack getEquipment(EntityEquipment equipment, EquipmentSlot slot) {
@@ -94,9 +91,10 @@ public class InventoryUtils {
 
     /**
      * Set the ItemStack for  Slot.
+     *
      * @param equipment EntityEquipment
-     * @param slot EquipmentSlot
-     * @param item ItemStack
+     * @param slot      EquipmentSlot
+     * @param item      ItemStack
      */
     public static void setEquipment(EntityEquipment equipment, EquipmentSlot slot, ItemStack item) {
         switch (slot) {
@@ -162,7 +160,8 @@ public class InventoryUtils {
 
     /**
      * Get items from inventory matching item in hand.
-     * @param player Player
+     *
+     * @param player          Player
      * @param desiredQuantity qty
      * @return ItemStack
      */
@@ -248,7 +247,8 @@ public class InventoryUtils {
 
     /**
      * Give an item to a player.
-     * @param inv Inventory
+     *
+     * @param inv  Inventory
      * @param item ItemStack
      * @return boolean on success.
      */
@@ -282,8 +282,8 @@ public class InventoryUtils {
     /**
      * Subtract a specific quantity from an inventory slots item stack.
      *
-     * @param inv Inventory
-     * @param slot Slot id
+     * @param inv   Inventory
+     * @param slot  Slot id
      * @param quant amount
      */
     public static void subtractAmountFromPlayerInvSlot(Inventory inv, int slot, int quant) {
@@ -300,7 +300,7 @@ public class InventoryUtils {
      * Drop items at player's location.
      *
      * @param leftovers Map
-     * @param player Player
+     * @param player    Player
      */
     @SuppressWarnings("unused")
     public static void dropItemsByPlayer(Map<Integer, ItemStack> leftovers, Player player) {

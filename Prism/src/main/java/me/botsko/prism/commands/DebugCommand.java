@@ -59,9 +59,9 @@ public class DebugCommand implements SubHandler {
     private String getFile(Path file) {
         try {
             String out = new String(Files.readAllBytes(file), StandardCharsets.UTF_8);
-            out = removePatterns("hostname: (.*)",out,"**secret.host**");
-            out = removePatterns("username: (.*)",out,"**username**");
-            return removePatterns("password: (.*)",out,"**password**");
+            out = removePatterns("hostname: (.*)", out, "**secret.host**");
+            out = removePatterns("username: (.*)", out, "**username**");
+            return removePatterns("password: (.*)", out, "**password**");
         } catch (IOException e) {
             return ExceptionUtils.getFullStackTrace(e);
         }
@@ -72,7 +72,7 @@ public class DebugCommand implements SubHandler {
         Pattern p = Pattern.compile(patten);
         Matcher matcher = p.matcher(haystack);
         while (matcher.find()) {
-            haystack = haystack.replaceFirst(matcher.group(1),replacement);
+            haystack = haystack.replaceFirst(matcher.group(1), replacement);
         }
         return haystack;
     }
@@ -157,15 +157,15 @@ public class DebugCommand implements SubHandler {
                                             .clickEvent(ClickEvent.openUrl(pasteUrl)))));
             Prism.log("Paste Created : " + pasteUrl);
             result.getPaste().get().getDeletionKey().ifPresent(
-                  s -> {
-                          Prism.messenger.sendMessage(sender, Prism.messenger.playerMsg(
-                                  Il8nHelper.getMessage("delete-key")
-                                          .replaceFirstText(Pattern.compile("<deletekey>"), builder ->
-                                                  Component.text()
-                                                          .content(s)
-                                                          .clickEvent(ClickEvent.copyToClipboard(s)))));
-                          Prism.log("Deletion Key:" + s);
-                  }
+                    s -> {
+                        Prism.messenger.sendMessage(sender, Prism.messenger.playerMsg(
+                                Il8nHelper.getMessage("delete-key")
+                                        .replaceFirstText(Pattern.compile("<deletekey>"), builder ->
+                                                Component.text()
+                                                        .content(s)
+                                                        .clickEvent(ClickEvent.copyToClipboard(s)))));
+                        Prism.log("Deletion Key:" + s);
+                    }
             );
         } else {
             Prism.messenger.sendMessage(sender,

@@ -4,12 +4,7 @@ import me.botsko.prism.actionlibs.QueryParameters;
 import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permissible;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public abstract class SimplePrismParameterHandler implements PrismParameterHandler {
@@ -22,7 +17,8 @@ public abstract class SimplePrismParameterHandler implements PrismParameterHandl
 
     /**
      * Constructor.
-     * @param name String
+     *
+     * @param name    String
      * @param aliases String...
      */
     public SimplePrismParameterHandler(String name, String... aliases) {
@@ -31,9 +27,10 @@ public abstract class SimplePrismParameterHandler implements PrismParameterHandl
 
     /**
      * Constructor.
-     * @param name String
+     *
+     * @param name         String
      * @param inputMatcher Pattern
-     * @param aliases String...
+     * @param aliases      String...
      */
     public SimplePrismParameterHandler(String name, Pattern inputMatcher, String... aliases) {
         this.name = name;
@@ -64,6 +61,7 @@ public abstract class SimplePrismParameterHandler implements PrismParameterHandl
 
     /**
      * Get Permission.
+     *
      * @return the permission required to use this parameter.
      */
     public String getPermission() {
@@ -72,6 +70,7 @@ public abstract class SimplePrismParameterHandler implements PrismParameterHandl
 
     /**
      * Set a permission.
+     *
      * @param permission the permission required to use this parameter.
      */
     @SuppressWarnings("unused")
@@ -81,9 +80,10 @@ public abstract class SimplePrismParameterHandler implements PrismParameterHandl
 
     /**
      * Process the command.
-     * @param query QueryParameters
-     * @param alias String
-     * @param input String
+     *
+     * @param query  QueryParameters
+     * @param alias  String
+     * @param input  String
      * @param sender CommandSender
      */
     protected abstract void process(QueryParameters query, String alias, String input, CommandSender sender);
@@ -146,9 +146,10 @@ public abstract class SimplePrismParameterHandler implements PrismParameterHandl
 
     /**
      * Tab complete.
-     * @param alias String
+     *
+     * @param alias            String
      * @param partialParameter String
-     * @param sender CommandSender
+     * @param sender           CommandSender
      * @return List
      */
     protected List<String> tabComplete(String alias, String partialParameter, CommandSender sender) {

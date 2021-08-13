@@ -40,10 +40,10 @@ public class Messenger {
      */
     public void sendMessage(CommandSender sender, Component message) {
         if (sender instanceof ConsoleCommandSender) {
-            audienceProvider.console().sendMessage(Identity.nil(),message);
+            audienceProvider.console().sendMessage(Identity.nil(), message);
         } else {
             ((BukkitAudiences) audienceProvider).sender(sender).sendMessage(Identity.nil(),
-                  message.colorIfAbsent(defaultColor));
+                    message.colorIfAbsent(defaultColor));
         }
     }
 
@@ -174,10 +174,11 @@ public class Messenger {
 
     /**
      * Send a message to console.
+     *
      * @param msg the message.
      */
     public void sendConsoleMessage(Component msg) {
-        audienceProvider.console().sendMessage(Identity.nil(),msg);
+        audienceProvider.console().sendMessage(Identity.nil(), msg);
     }
 
 }

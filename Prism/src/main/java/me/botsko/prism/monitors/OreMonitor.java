@@ -33,6 +33,7 @@ public class OreMonitor {
 
     /**
      * Constructor.
+     *
      * @param plugin Prism
      */
     public OreMonitor(Prism plugin) {
@@ -112,8 +113,8 @@ public class OreMonitor {
     private int getLightLevel(Block block) {
         int light = 0;
         final BlockFace[] blockFaces =
-                new BlockFace[] {BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST, BlockFace.WEST,
-                      BlockFace.UP, BlockFace.DOWN};
+                new BlockFace[]{BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST, BlockFace.WEST,
+                        BlockFace.UP, BlockFace.DOWN};
         for (BlockFace blockFace : blockFaces) {
             light = Math.max(light, block.getRelative(blockFace).getLightLevel());
             if (light >= 15) {
@@ -141,6 +142,7 @@ public class OreMonitor {
 
     /**
      * Get Nice Name.
+     *
      * @param block Block.
      * @return String
      */
@@ -150,6 +152,7 @@ public class OreMonitor {
 
     /**
      * True if watching.
+     *
      * @param block Block
      * @return bool
      */
@@ -159,8 +162,9 @@ public class OreMonitor {
 
     /**
      * Find nearby of same type.
-     * @param type Material
-     * @param currBlock Block
+     *
+     * @param type           Material
+     * @param currBlock      Block
      * @param matchingBlocks List to match.
      * @return List that matched.
      */

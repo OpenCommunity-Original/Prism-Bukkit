@@ -138,7 +138,7 @@ public class TeleportCommand implements SubHandler {
             if (PaperLib.isPaper()) {
                 PaperLib.teleportAsync(call.getPlayer(), destinationAction.getLoc())
                         .thenAccept(
-                              success -> sendTeleportCompleteMessage(success, call.getPlayer(), destinationAction));
+                                success -> sendTeleportCompleteMessage(success, call.getPlayer(), destinationAction));
             } else {
                 sendTeleportCompleteMessage(call.getPlayer().teleport(destinationAction.getLoc()), call.getPlayer(),
                         destinationAction);

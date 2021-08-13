@@ -20,6 +20,7 @@ public class EntityAction extends GenericAction {
 
     /**
      * Constructor.
+     *
      * @param name String
      * @return EntityType
      */
@@ -37,7 +38,8 @@ public class EntityAction extends GenericAction {
 
     /**
      * Set the entity.
-     * @param entity Entity
+     *
+     * @param entity  Entity
      * @param dyeUsed String
      */
     public void setEntity(Entity entity, String dyeUsed) {
@@ -81,6 +83,7 @@ public class EntityAction extends GenericAction {
 
     /**
      * Get nice name.
+     *
      * @return String
      */
     @Override

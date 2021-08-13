@@ -80,8 +80,8 @@ public class BlockChangeAction extends BlockAction {
     }
 
     private ChangeResult processChange(Player player, PrismParameters parameters, boolean isPreview,
-                                           Material originalMaterial, Material replacedMaterial, BlockData replacedData,
-                                           Block currentBlock, boolean isDeferred, BlockAction action) {
+                                       Material originalMaterial, Material replacedMaterial, BlockData replacedData,
+                                       Block currentBlock, boolean isDeferred, BlockAction action) {
         if (Utilities.isAcceptableForBlockPlace(currentBlock.getType())
                 || Utilities.areBlockIdsSameCoreItem(currentBlock.getType(), originalMaterial) || isPreview
                 || parameters.hasFlag(Flag.OVERWRITE)) {

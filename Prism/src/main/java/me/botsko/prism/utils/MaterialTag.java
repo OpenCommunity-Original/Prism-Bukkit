@@ -41,7 +41,7 @@ public class MaterialTag implements Tag<Material> {
     public static final MaterialTag FLOOR_SKULLS = new MaterialTag(Material.SKELETON_SKULL,
             Material.WITHER_SKELETON_SKULL, Material.CREEPER_HEAD, Material.DRAGON_HEAD,
             Material.PLAYER_HEAD, Material.ZOMBIE_HEAD);
-    public static final MaterialTag HYPHAE = new MaterialTag("_HYPHAE",MatchMode.SUFFIX);
+    public static final MaterialTag HYPHAE = new MaterialTag("_HYPHAE", MatchMode.SUFFIX);
     public static final MaterialTag SKULLS = new MaterialTag(WALL_SKULLS).append(FLOOR_SKULLS);
     public static final MaterialTag ALL_PLANTS = new MaterialTag(PLANTS).append(TALL_PLANTS);
     public static final Tag<Material> BOATS = new MaterialTag(Tag.ITEMS_BOATS);
@@ -50,12 +50,12 @@ public class MaterialTag implements Tag<Material> {
     public static final MaterialTag BANNERS = new MaterialTag(ALL_BANNERS).exclude("_WALL_", MatchMode.CONTAINS);
     public static final MaterialTag WALL_BANNERS = new MaterialTag(Tag.BANNERS).exclude(BANNERS);
     public static final MaterialTag BEDS = new MaterialTag(Tag.BEDS);
-    public static final MaterialTag CRAFTING = new MaterialTag(Material.CRAFTING_TABLE,Material.ANVIL,Material.JIGSAW,
-            Material.SMITHING_TABLE,Material.BREWING_STAND,Material.ENCHANTING_TABLE,Material.SMOKER,Material.FURNACE,
+    public static final MaterialTag CRAFTING = new MaterialTag(Material.CRAFTING_TABLE, Material.ANVIL, Material.JIGSAW,
+            Material.SMITHING_TABLE, Material.BREWING_STAND, Material.ENCHANTING_TABLE, Material.SMOKER, Material.FURNACE,
             Material.BLAST_FURNACE);
     public static final MaterialTag CONTAINERS = new MaterialTag(CRAFTING).append(
-            Material.CHEST,Material.BARREL,Material.ENDER_CHEST,Material.TRAPPED_CHEST,Material.CHEST_MINECART,
-            Material.DROPPER,Material.DISPENSER, Material.HOPPER,Material.HOPPER_MINECART
+            Material.CHEST, Material.BARREL, Material.ENDER_CHEST, Material.TRAPPED_CHEST, Material.CHEST_MINECART,
+            Material.DROPPER, Material.DISPENSER, Material.HOPPER, Material.HOPPER_MINECART
     );
     public static final MaterialTag USABLE = new MaterialTag(Tag.BUTTONS).append(Tag.DOORS).append(Tag.TRAPDOORS)
             .append(Material.LEVER).append(Tag.FENCE_GATES);
@@ -67,6 +67,7 @@ public class MaterialTag implements Tag<Material> {
 
     /**
      * Constructor.
+     *
      * @param materials Set
      */
     @SuppressWarnings("unused")
@@ -76,6 +77,7 @@ public class MaterialTag implements Tag<Material> {
 
     /**
      * Constructor.
+     *
      * @param materialTags Tag
      */
     @SafeVarargs
@@ -87,6 +89,7 @@ public class MaterialTag implements Tag<Material> {
     /**
      * Constructor.
      * add new Material to the group.
+     *
      * @param materials Materials
      */
     public MaterialTag(Material... materials) {
@@ -97,8 +100,9 @@ public class MaterialTag implements Tag<Material> {
     /**
      * Constructor.
      * add  Material via matching.
+     *
      * @param segment Sting
-     * @param mode MatchMode
+     * @param mode    MatchMode
      */
     public MaterialTag(String segment, MatchMode mode) {
         this.materials = EnumSet.noneOf(Material.class);
@@ -118,6 +122,7 @@ public class MaterialTag implements Tag<Material> {
 
     /**
      * add new Tags to the group.
+     *
      * @param materialTags Tag
      * @return MaterialTag
      */
@@ -202,8 +207,9 @@ public class MaterialTag implements Tag<Material> {
 
     /**
      * Exclude Tags from this group.
+     *
      * @param segment String
-     * @param mode MatchMode
+     * @param mode    MatchMode
      * @return MaterialTag
      */
     public MaterialTag exclude(String segment, MatchMode mode) {

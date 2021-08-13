@@ -11,9 +11,10 @@ public class CallInfo {
 
     /**
      * Constructor.
+     *
      * @param sender CommandSender
      * @param player Player
-     * @param args String[]
+     * @param args   String[]
      */
     public CallInfo(CommandSender sender, Player player, String[] args) {
         this.sender = sender;
@@ -23,6 +24,7 @@ public class CallInfo {
 
     /**
      * Get Player.
+     *
      * @return Player
      */
     public Player getPlayer() {
@@ -31,6 +33,7 @@ public class CallInfo {
 
     /**
      * Get Sender.
+     *
      * @return CommandSender
      */
     public CommandSender getSender() {
@@ -39,6 +42,7 @@ public class CallInfo {
 
     /**
      * Get arg number n.
+     *
      * @param n int
      * @return String.
      */
@@ -48,6 +52,7 @@ public class CallInfo {
 
     /**
      * Get all args.
+     *
      * @return String[]
      */
     public String[] getArgs() {

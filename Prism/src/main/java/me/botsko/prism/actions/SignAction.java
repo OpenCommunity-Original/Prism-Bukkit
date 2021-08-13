@@ -63,6 +63,7 @@ public class SignAction extends GenericAction {
 
     /**
      * Get Lines.
+     *
      * @return String[]
      */
     public String[] getLines() {
@@ -71,6 +72,7 @@ public class SignAction extends GenericAction {
 
     /**
      * Get the sign type.
+     *
      * @return Material
      */
     public Material getSignType() {
@@ -92,6 +94,7 @@ public class SignAction extends GenericAction {
 
     /**
      * Get the blockface.
+     *
      * @return BlockFace.
      */
     public BlockFace getFacing() {

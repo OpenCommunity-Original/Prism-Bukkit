@@ -1,16 +1,7 @@
 package me.botsko.prism;
 
 import io.papermc.lib.PaperLib;
-import me.botsko.prism.actionlibs.ActionRegistry;
-import me.botsko.prism.actionlibs.ActionsQuery;
-import me.botsko.prism.actionlibs.HandlerRegistry;
-import me.botsko.prism.actionlibs.Ignore;
-import me.botsko.prism.actionlibs.InternalAffairs;
-import me.botsko.prism.actionlibs.QueryParameters;
-import me.botsko.prism.actionlibs.QueryResult;
-import me.botsko.prism.actionlibs.QueueDrain;
-import me.botsko.prism.actionlibs.RecordingTask;
-import me.botsko.prism.actions.ActionMeter;
+import me.botsko.prism.actionlibs.*;
 import me.botsko.prism.api.PrismApi;
 import me.botsko.prism.api.PrismParameters;
 import me.botsko.prism.api.Result;
@@ -21,32 +12,13 @@ import me.botsko.prism.database.PrismDataSource;
 import me.botsko.prism.database.PrismDatabaseFactory;
 import me.botsko.prism.database.sql.SqlPlayerIdentificationHelper;
 import me.botsko.prism.events.EventHelper;
-import me.botsko.prism.listeners.PaperListeners;
-import me.botsko.prism.listeners.PrismBlockEvents;
-import me.botsko.prism.listeners.PrismCustomEvents;
-import me.botsko.prism.listeners.PrismEntityEvents;
-import me.botsko.prism.listeners.PrismInventoryEvents;
-import me.botsko.prism.listeners.PrismInventoryMoveItemEvent;
-import me.botsko.prism.listeners.PrismPlayerEvents;
-import me.botsko.prism.listeners.PrismVehicleEvents;
-import me.botsko.prism.listeners.PrismWorldEvents;
+import me.botsko.prism.listeners.*;
 import me.botsko.prism.listeners.self.PrismMiscEvents;
 import me.botsko.prism.measurement.QueueStats;
 import me.botsko.prism.measurement.TimeTaken;
 import me.botsko.prism.monitors.OreMonitor;
 import me.botsko.prism.monitors.UseMonitor;
-import me.botsko.prism.parameters.ActionParameter;
-import me.botsko.prism.parameters.BeforeParameter;
-import me.botsko.prism.parameters.BlockParameter;
-import me.botsko.prism.parameters.EntityParameter;
-import me.botsko.prism.parameters.FlagParameter;
-import me.botsko.prism.parameters.IdParameter;
-import me.botsko.prism.parameters.KeywordParameter;
-import me.botsko.prism.parameters.PlayerParameter;
-import me.botsko.prism.parameters.PrismParameterHandler;
-import me.botsko.prism.parameters.RadiusParameter;
-import me.botsko.prism.parameters.SinceParameter;
-import me.botsko.prism.parameters.WorldParameter;
+import me.botsko.prism.parameters.*;
 import me.botsko.prism.players.PrismPlayer;
 import me.botsko.prism.purge.PurgeManager;
 import me.botsko.prism.utils.MaterialAliases;
@@ -58,7 +30,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -79,29 +50,11 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.FileHandler;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+import java.util.concurrent.*;
+import java.util.logging.*;
 import java.util.stream.Collectors;
-
-import static org.bukkit.Bukkit.getLogger;
 
 public class Prism extends JavaPlugin implements PrismApi {
 
@@ -112,7 +65,7 @@ public class Prism extends JavaPlugin implements PrismApi {
     private static final HashMap<Material, TextColor> alertedOres = new HashMap<>();
     private static final Logger log = Logger.getLogger("Minecraft");
     private static final HashMap<String, PrismParameterHandler> paramHandlers = new HashMap<>();
-    private static String baseUrl = "https://prism-bukkit.readthedocs.io/en/latest/";
+    private static final String baseUrl = "https://prism-bukkit.readthedocs.io/en/latest/";
     public static Messenger messenger;
     public static FileConfiguration config;
     public static boolean isPaper = true;
@@ -785,10 +738,10 @@ public class Prism extends JavaPlugin implements PrismApi {
     public void alertPlayers(Player player, Component msg, String alertPerm) {
         for (final Player p : getServer().getOnlinePlayers()) {
             if ((!p.equals(player) || getConfig().getBoolean("prism.alerts.alert-player-about-self"))
-                  && (p.hasPermission("prism.alerts") || (alertPerm != null && p.hasPermission(alertPerm)))) {
+                    && (p.hasPermission("prism.alerts") || (alertPerm != null && p.hasPermission(alertPerm)))) {
                 TextComponent prefix = Il8nHelper.getMessage("alert-prefix" + " ")
-                            .color(NamedTextColor.RED)
-                            .append(msg);
+                        .color(NamedTextColor.RED)
+                        .append(msg);
                 audiences.player(p).sendMessage(Identity.nil(), prefix);
             }
         }

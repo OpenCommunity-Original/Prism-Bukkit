@@ -23,6 +23,7 @@ public class InspectorWand extends QueryWandBase {
 
     /**
      * Constructor.
+     *
      * @param plugin Prism
      */
     public InspectorWand(Prism plugin) {
@@ -90,10 +91,10 @@ public class InspectorWand extends QueryWandBase {
                 final String blockname = Prism.getItems().getAlias(block.getType(), block.getBlockData());
                 Prism.messenger.sendMessage(player,
                         Prism.messenger.playerHeaderMsg(ReplaceableTextComponent.builder("inspector-wand-header")
-                                .replace("<block>",blockname)
-                                .replace("<x>",loc.getBlockX())
-                                .replace("<y>",loc.getBlockY())
-                                .replace("<z>",loc.getBlockY())
+                                .replace("<block>", blockname)
+                                .replace("<x>", loc.getBlockX())
+                                .replace("<y>", loc.getBlockY())
+                                .replace("<z>", loc.getBlockY())
                                 .build().colorIfAbsent(NamedTextColor.GRAY)));
                 if (results.getActionResults().size() > 5) {
                     Prism.messenger.sendMessage(player,

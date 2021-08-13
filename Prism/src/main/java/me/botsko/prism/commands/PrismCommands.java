@@ -69,7 +69,7 @@ public class PrismCommands extends Executor {
                 .setMinArgs(1).setHandler(new PageCommand(prism));
         addSub(new String[]{"wand", "w", "i", "inspect"},
                 new String[]{"prism.rollback", "prism.restore", "prism.lookup", "prism.wand.inspect",
-                      "prism.wand.profile", "prism.wand.rollback", "prism.wand.restore"})
+                        "prism.wand.profile", "prism.wand.rollback", "prism.wand.restore"})
                 .setHandler(new WandCommand(prism));
         addSub(new String[]{"setmy"}, new String[]{"prism.setmy.wand"}).setHandler(new SetmyCommand(prism));
         addSub(new String[]{"resetmy"}, new String[]{"prism.setmy.wand"}).setHandler(new ResetmyCommand(prism));

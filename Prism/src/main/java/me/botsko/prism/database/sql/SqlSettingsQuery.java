@@ -26,7 +26,7 @@ public class SqlSettingsQuery extends AbstractSettingsQuery implements SettingsQ
     @Override
     public void deleteSetting(String key, Player player) {
         try (
-                Connection conn =  dataSource.getConnection();
+                Connection conn = dataSource.getConnection();
                 PreparedStatement s = conn.prepareStatement("DELETE FROM " + prefix + "meta WHERE k = ?")
         ) {
             String finalKey = key;
@@ -52,7 +52,7 @@ public class SqlSettingsQuery extends AbstractSettingsQuery implements SettingsQ
                 Connection conn = dataSource.getConnection();
                 PreparedStatement s = conn.prepareStatement("DELETE FROM " + prefix + "meta WHERE k = ?");
                 PreparedStatement s2 = conn.prepareStatement("INSERT INTO " + prefix + "meta (k,v) VALUES (?,?)")
-                ) {
+        ) {
             s.setString(1, finalKey);
             s.executeUpdate();
             s2.setString(1, finalKey);

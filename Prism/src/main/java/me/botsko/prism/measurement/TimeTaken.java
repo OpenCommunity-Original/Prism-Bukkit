@@ -14,6 +14,7 @@ public class TimeTaken {
 
     /**
      * Constructor.
+     *
      * @param plugin Prism
      */
     public TimeTaken(Prism plugin) {
@@ -22,6 +23,7 @@ public class TimeTaken {
 
     /**
      * Get the timestamp.
+     *
      * @return long
      */
     protected long getTimestamp() {
@@ -31,6 +33,7 @@ public class TimeTaken {
 
     /**
      * Get the event.
+     *
      * @param eventname String
      */
     public void recordTimedEvent(String eventname) {

@@ -9,32 +9,14 @@ import me.botsko.prism.utils.MaterialTag;
 import me.botsko.prism.utils.block.Utilities;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.BlockState;
-import org.bukkit.block.DoubleChest;
-import org.bukkit.block.Jukebox;
-import org.bukkit.block.Sign;
+import org.bukkit.block.*;
 import org.bukkit.block.data.type.Chest;
 import org.bukkit.block.data.type.Chest.Type;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockBurnEvent;
-import org.bukkit.event.block.BlockDispenseEvent;
-import org.bukkit.event.block.BlockExplodeEvent;
-import org.bukkit.event.block.BlockFadeEvent;
-import org.bukkit.event.block.BlockFormEvent;
-import org.bukkit.event.block.BlockFromToEvent;
-import org.bukkit.event.block.BlockIgniteEvent;
-import org.bukkit.event.block.BlockPistonExtendEvent;
-import org.bukkit.event.block.BlockPistonRetractEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.block.BlockSpreadEvent;
-import org.bukkit.event.block.LeavesDecayEvent;
-import org.bukkit.event.block.SignChangeEvent;
+import org.bukkit.event.block.*;
 import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
@@ -63,7 +45,8 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * Process over each item.
-     * @param block Block
+     *
+     * @param block    Block
      * @param callback callback that consumes items/integer pairs.
      */
     void forEachItem(Block block, BiConsumer<ItemStack, Integer> callback) {
@@ -110,13 +93,13 @@ public class PrismBlockEvents extends BaseListener {
     private void logBlockRelationshipsForBlock(Player player, Block block) {
         relatedBlockCallback(block, b -> RecordingQueue.addToQueue(
                 ActionFactory.createBlock("block-break", b, player)), s -> plugin.preplannedBlockFalls.put(
-                        s, player.getUniqueId().toString()));
+                s, player.getUniqueId().toString()));
     }
 
     void logBlockRelationshipsForBlock(String nonPlayer, Block block) {
         relatedBlockCallback(block, b -> RecordingQueue.addToQueue(
                 ActionFactory.createBlock("block-break", b, nonPlayer)), s -> plugin.preplannedBlockFalls.put(
-                        s, nonPlayer));
+                s, nonPlayer));
     }
 
     private void relatedBlockCallback(Block block, Consumer<Block> breakCallback, Consumer<String> fallCallback) {
@@ -179,6 +162,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * Handle a block break event.
+     *
      * @param event BlockBreakEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -206,7 +190,7 @@ public class PrismBlockEvents extends BaseListener {
         // logItemRemoveFromDestroyedContainer( player, block );
         forEachItem(block, (i, s) -> RecordingQueue.addToQueue(
                 ActionFactory.createItemStack("item-remove", i, i.getAmount(), 0, null,
-                block.getLocation(), player)));
+                        block.getLocation(), player)));
 
         // Change handling a bit if it's a long block
         /*
@@ -241,6 +225,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * Handle BlockPlaceEvent.
+     *
      * @param event BlockPlaceEvent.
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -271,6 +256,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * BlockSpreadEvent.
+     *
      * @param event BlockSpreadEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -298,6 +284,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * BlockFormEvent.
+     *
      * @param event BlockFormEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -314,6 +301,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * BlockFadeEvent.
+     *
      * @param event BlockFadeEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -333,6 +321,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * LeavesDecayEvent.
+     *
      * @param event LeavesDecayEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -346,6 +335,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * Primarily for tracking bed explosions in the nether and end.
+     *
      * @param event BlockExplodeEvent
      */
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -368,6 +358,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * Tracks players entering a bed  and where its not possible cache's it in case of explosion.
+     *
      * @param enterEvent PlayerBedEnterEvent
      */
     @EventHandler(priority = EventPriority.MONITOR)
@@ -384,6 +375,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * BlockBurnEvent.
+     *
      * @param event BlockBurnEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -408,6 +400,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * SignChangeEvent.
+     *
      * @param event SignChangeEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -423,6 +416,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * BlockIgniteEvent.
+     *
      * @param event BlockIgniteEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -472,6 +466,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * BlockDispenseEvent.
+     *
      * @param event BlockDispenseEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -485,6 +480,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * BlockPistonExtendEvent.
+     *
      * @param event BlockPistonExtendEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -528,6 +524,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * BlockPistonRetractEvent.
+     *
      * @param event BlockPistonRetractEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -553,6 +550,7 @@ public class PrismBlockEvents extends BaseListener {
 
     /**
      * BlockFromToEvent.
+     *
      * @param event BlockFromToEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)

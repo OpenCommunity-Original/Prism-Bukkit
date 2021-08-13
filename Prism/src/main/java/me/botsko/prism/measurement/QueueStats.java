@@ -1,11 +1,7 @@
 package me.botsko.prism.measurement;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 public class QueueStats {
@@ -14,6 +10,7 @@ public class QueueStats {
 
     /**
      * Add a TaskRunInfo to the run count.
+     *
      * @param count TaskRunInfo
      */
     public void addRunInfo(TaskRunInfo count) {
@@ -37,6 +34,7 @@ public class QueueStats {
 
     /**
      * Gets the average batch process time over the last minute.
+     *
      * @return average Batch processing time in millisecs;
      */
     public static double getPerMinuteBatchProcessAverage() {
@@ -49,6 +47,7 @@ public class QueueStats {
 
     /**
      * Gets the average batch build time over the last minute.
+     *
      * @return average Batch build time in millisecs;
      */
     public static double getPerMinuteBatchBuildAverage() {
@@ -62,6 +61,7 @@ public class QueueStats {
 
     /**
      * Gets the average batch insert count over the last minute.
+     *
      * @return average batch insert count;
      */
     public static double getPerMinuteInsertAverage() {
@@ -78,6 +78,7 @@ public class QueueStats {
 
     /**
      * Returns a list of recent recording actions.
+     *
      * @return ConcurrentSkipListMap
      */
     public ConcurrentSkipListMap<Long, TaskRunInfo> getRecentRunCounts() {
@@ -95,8 +96,9 @@ public class QueueStats {
 
         /**
          * Construct a Task info.
-         * @param records number of records
-         * @param batchingTime time to build the batch
+         *
+         * @param records          number of records
+         * @param batchingTime     time to build the batch
          * @param batchProcessTime time to insert the batch into the database.
          */
         public TaskRunInfo(long records, long batchingTime, long batchProcessTime) {

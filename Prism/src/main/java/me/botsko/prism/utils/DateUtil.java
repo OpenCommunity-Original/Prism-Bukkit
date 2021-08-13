@@ -8,6 +8,7 @@ public class DateUtil {
 
     /**
      * Translates a String to a timestamp showing ms since 0.
+     *
      * @return Long
      */
     public static Long translateTimeStringToDate(String argValue) {

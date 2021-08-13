@@ -12,27 +12,12 @@ import me.botsko.prism.utils.EntityUtils;
 import me.botsko.prism.utils.MaterialTag;
 import me.botsko.prism.utils.TypeUtils;
 import me.botsko.prism.utils.block.Utilities;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.DyeColor;
-import org.bukkit.Nameable;
-import org.bukkit.Tag;
-import org.bukkit.block.Banner;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.BlockState;
-import org.bukkit.block.CommandBlock;
-import org.bukkit.block.CreatureSpawner;
-import org.bukkit.block.Sign;
-import org.bukkit.block.Skull;
+import org.bukkit.*;
+import org.bukkit.block.*;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.banner.PatternType;
-import org.bukkit.block.data.Bisected;
+import org.bukkit.block.data.*;
 import org.bukkit.block.data.Bisected.Half;
-import org.bukkit.block.data.BlockData;
-import org.bukkit.block.data.Directional;
-import org.bukkit.block.data.Rotatable;
-import org.bukkit.block.data.Waterlogged;
 import org.bukkit.block.data.type.Bed;
 import org.bukkit.block.data.type.Bed.Part;
 import org.bukkit.command.CommandSender;
@@ -45,19 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.bukkit.Material.AIR;
-import static org.bukkit.Material.CHEST;
-import static org.bukkit.Material.COMMAND_BLOCK;
-import static org.bukkit.Material.FARMLAND;
-import static org.bukkit.Material.FIRE;
-import static org.bukkit.Material.JUKEBOX;
-import static org.bukkit.Material.NETHER_PORTAL;
-import static org.bukkit.Material.OBSIDIAN;
-import static org.bukkit.Material.PLAYER_HEAD;
-import static org.bukkit.Material.PLAYER_WALL_HEAD;
-import static org.bukkit.Material.SPAWNER;
-import static org.bukkit.Material.TRAPPED_CHEST;
-import static org.bukkit.Material.WATER;
+import static org.bukkit.Material.*;
 
 
 public class BlockAction extends GenericAction {
@@ -280,7 +253,7 @@ public class BlockAction extends GenericAction {
     }
 
     ChangeResult placeBlock(Player player, PrismParameters parameters, boolean isPreview, Block block,
-                                boolean isDeferred) {
+                            boolean isDeferred) {
         BlockStateChangeImpl stateChange;
 
         // Ensure block action is allowed to place a block here.
@@ -336,7 +309,7 @@ public class BlockAction extends GenericAction {
      * @return ChangeResult.
      */
     private @NotNull ChangeResult handleApply(final Block block, final BlockState originalBlock,
-                                                  final PrismParameters parameters, final boolean cancelIfBadPlace) {
+                                              final PrismParameters parameters, final boolean cancelIfBadPlace) {
         BlockState state = block.getState();
         // If lily pad, check that block below is water. Be sure
         // it's set to stationary water so the lily pad will sit

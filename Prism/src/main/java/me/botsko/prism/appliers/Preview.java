@@ -25,13 +25,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Preview implements Previewable {
 
@@ -141,16 +135,13 @@ public class Preview implements Previewable {
                     oldWand = Prism.playersWithActiveTools.get(player.getName());
                 }
 
-                boolean showNearby = true;
-                if (oldWand instanceof RollbackWand) {
-                    showNearby = false;
-                }
+                boolean showNearby = !(oldWand instanceof RollbackWand);
                 if (showNearby) {
                     // Inform nearby players
                     plugin.notifyNearby(player, parameters.getRadius(), ReplaceableTextComponent.builder("notify-near")
-                          .replace("<player>", player.getDisplayName())
-                          .replace("<processType>", processType.name().toLowerCase())
-                          .build());
+                            .replace("<player>", player.getDisplayName())
+                            .replace("<processType>", processType.name().toLowerCase())
+                            .build());
                     // Inform staff
                     if (plugin.getConfig().getBoolean("prism.alerts.alert-staff-to-applied-process")) {
                         final String cmd = parameters.getOriginalCommand();
@@ -192,7 +183,7 @@ public class Preview implements Previewable {
             final int currentQueueOffset = blockChangesRead;
             if (currentQueueOffset < worldChangeQueue.size()) {
                 for (final Iterator<Handler> iterator = worldChangeQueue.listIterator(currentQueueOffset);
-                      iterator.hasNext();) {
+                     iterator.hasNext(); ) {
                     final Handler a = iterator.next();
                     if (isPreview) {
                         blockChangesRead++;
@@ -302,13 +293,13 @@ public class Preview implements Previewable {
     private void moveEntitiesToSafety() {
         if (parameters.getWorld() != null && player != null) {
             final List<Entity> entities = player.getNearbyEntities(parameters.getRadius(), parameters.getRadius(),
-                  parameters.getRadius());
+                    parameters.getRadius());
             entities.add(player);
             for (final Entity entity : entities) {
                 if (entity instanceof LivingEntity) {
                     int add = 0;
                     if (EntityUtils.inCube(parameters.getPlayerLocation(), parameters.getRadius(),
-                          entity.getLocation())) {
+                            entity.getLocation())) {
                         final Location l = entity.getLocation();
                         while (!EntityUtils.playerMayPassThrough(l.getBlock().getType())) {
                             add++;
@@ -337,7 +328,7 @@ public class Preview implements Previewable {
         }
 
         final ApplierResult results = new ApplierResult(isPreview, changesAppliedCount, skippedBlockCount,
-              changesPlannedCount, blockStateChanges, parameters, entitiesMoved);
+                changesPlannedCount, blockStateChanges, parameters, entitiesMoved);
 
         if (callback != null) {
             callback.handle(sender, results);
@@ -346,7 +337,7 @@ public class Preview implements Previewable {
         // Trigger the events
         if (processType.equals(PrismProcessType.ROLLBACK)) {
             final PrismRollBackEvent event = EventHelper.createRollBackEvent(blockStateChanges, player, parameters,
-                  results);
+                    results);
             plugin.getServer().getPluginManager().callEvent(event);
         }
 

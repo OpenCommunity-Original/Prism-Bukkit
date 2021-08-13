@@ -16,7 +16,8 @@ public class Settings {
 
     /**
      * Delete the setting.
-     * @param key String
+     *
+     * @param key    String
      * @param player Player
      */
     public static void deleteSetting(String key, Player player) {
@@ -25,7 +26,8 @@ public class Settings {
 
     /**
      * Save the setting.
-     * @param key String
+     *
+     * @param key   String
      * @param value String.
      */
     public static void saveSetting(String key, String value) {
@@ -34,8 +36,9 @@ public class Settings {
 
     /**
      * Save.
-     * @param key String
-     * @param value String
+     *
+     * @param key    String
+     * @param value  String
      * @param player Player
      */
     public static void saveSetting(String key, String value, Player player) {
@@ -44,6 +47,7 @@ public class Settings {
 
     /**
      * Get.
+     *
      * @param key String
      * @return String
      */
@@ -53,7 +57,8 @@ public class Settings {
 
     /**
      * Get.
-     * @param key String
+     *
+     * @param key    String
      * @param player Player
      * @return String
      */

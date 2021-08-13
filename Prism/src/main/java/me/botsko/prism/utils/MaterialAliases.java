@@ -15,15 +15,8 @@ import org.bukkit.inventory.ItemStack;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 public class MaterialAliases {
     private static final int SUBID_WILDCARD = -1;
@@ -94,11 +87,11 @@ public class MaterialAliases {
                 }
 
                 query.findIds(m.name().toLowerCase(Locale.ENGLISH), dataString,
-                      (i, d) ->
-                        storeCache(m, dataString, i, d), () -> {
-                        int id = query.mapAutoId(matName, dataString);
-                        storeCache(m, dataString, id, 0);
-                      });
+                        (i, d) ->
+                                storeCache(m, dataString, i, d), () -> {
+                            int id = query.mapAutoId(matName, dataString);
+                            storeCache(m, dataString, id, 0);
+                        });
             }
         });
 
@@ -170,17 +163,17 @@ public class MaterialAliases {
         SqlIdMapQuery query = new SqlIdMapQuery(Prism.getPrismDataSource());
 
         query.findMaterial(blockId, blockSubId,
-              (material, state) -> {
-                  result.material = Material.matchMaterial(material.toUpperCase(Locale.ENGLISH));
-                  result.state = state;
-                  if (result.material != null) {
-                      storeCache(result.material, result.state, blockId, blockSubId);
-                  }
-              }, () -> {
-                  if (logMaterialErrors) {
-                      Prism.log("matError: [" + blockId + ", " + blockSubId + "] -> ???");
-                  }
-              });
+                (material, state) -> {
+                    result.material = Material.matchMaterial(material.toUpperCase(Locale.ENGLISH));
+                    result.state = state;
+                    if (result.material != null) {
+                        storeCache(result.material, result.state, blockId, blockSubId);
+                    }
+                }, () -> {
+                    if (logMaterialErrors) {
+                        Prism.log("matError: [" + blockId + ", " + blockSubId + "] -> ???");
+                    }
+                });
 
         if (result.material == null) {
             return null;
@@ -226,14 +219,16 @@ public class MaterialAliases {
 
         synchronized (this) {
             query.findIds(materialName, state,
-                  (queryId, querySubId) -> {
-                    result.first = queryId;
-                    result.second = querySubId;
-                    storeCache(material, state, queryId, querySubId); },
-                  () -> {
-                    int blockId = query.mapAutoId(materialName, state);
-                    result.first = blockId;
-                    storeCache(material, state, blockId, 0); });
+                    (queryId, querySubId) -> {
+                        result.first = queryId;
+                        result.second = querySubId;
+                        storeCache(material, state, queryId, querySubId);
+                    },
+                    () -> {
+                        int blockId = query.mapAutoId(materialName, state);
+                        result.first = blockId;
+                        storeCache(material, state, blockId, 0);
+                    });
         }
 
         if (blockSubId != durability) {

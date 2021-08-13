@@ -48,7 +48,7 @@ public class WhatCommand extends Executor {
                         .append(Component.text(ItemUtils.getItemFullNiceName(item)))
                         .colorIfAbsent(NamedTextColor.WHITE)
                         .build();
-                Prism.messenger.sendMessage(call.getPlayer(),out);
+                Prism.messenger.sendMessage(call.getPlayer(), out);
             }
 
             @Override

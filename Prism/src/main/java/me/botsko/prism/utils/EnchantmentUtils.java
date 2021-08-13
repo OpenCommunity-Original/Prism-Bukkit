@@ -77,7 +77,7 @@ public class EnchantmentUtils {
             case "unbreaking":
                 return Enchantment.DURABILITY;
             default:
-                String formattedName = name.replace(' ','_');
+                String formattedName = name.replace(' ', '_');
                 NamespacedKey key = NamespacedKey.minecraft(formattedName);
                 return Enchantment.getByKey(key);
         }
@@ -87,7 +87,7 @@ public class EnchantmentUtils {
      * Return the common name for an enchantment.
      *
      * @param enchantment Keyed
-     * @param level int
+     * @param level       int
      * @return String
      */
     public static String getClientSideEnchantmentName(Enchantment enchantment, int level) {

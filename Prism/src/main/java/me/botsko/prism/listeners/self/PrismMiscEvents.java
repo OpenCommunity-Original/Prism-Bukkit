@@ -52,6 +52,7 @@ public class PrismMiscEvents implements Listener {
 
     /**
      * PrismExtinguishEvent.
+     *
      * @param event PrismExtinguishEvent.
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)

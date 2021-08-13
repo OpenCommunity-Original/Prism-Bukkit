@@ -10,8 +10,9 @@ public class WandUtils {
 
     /**
      * True if uses wand on click.
+     *
      * @param player Player
-     * @param loc Location.
+     * @param loc    Location.
      * @return boolean
      */
     public static boolean playerUsesWandOnClick(Player player, Location loc) {

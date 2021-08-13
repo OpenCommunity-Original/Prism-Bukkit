@@ -17,6 +17,7 @@ public class RestoreWand extends QueryWandBase {
 
     /**
      * Constructor.
+     *
      * @param plugin Prism
      */
     public RestoreWand(Prism plugin) {

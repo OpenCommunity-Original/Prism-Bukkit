@@ -13,6 +13,7 @@ public class RecorderCommand extends AbstractCommand {
 
     /**
      * Constructor.
+     *
      * @param plugin Prism
      */
     public RecorderCommand(Prism plugin) {
@@ -55,14 +56,14 @@ public class RecorderCommand extends AbstractCommand {
 
                 // Run db tests...
                 Prism.messenger.sendMessage(call.getSender(),
-                      Prism.messenger.playerMsg(Il8nHelper.getMessage("database-validating")));
+                        Prism.messenger.playerMsg(Il8nHelper.getMessage("database-validating")));
 
                 try (
                         Connection conn = Prism.getPrismDataSource().getConnection()
                 ) {
                     if (conn == null || conn.isClosed()) {
                         Prism.messenger.sendMessage(call.getSender(),
-                              Prism.messenger.playerError(Il8nHelper.getMessage("no-valid-database")));
+                                Prism.messenger.playerError(Il8nHelper.getMessage("no-valid-database")));
                         return;
                     }
 

@@ -115,7 +115,7 @@ public class UndoCommand implements SubHandler {
             final ActionsQuery aq = new ActionsQuery(plugin);
             final QueryResult results = aq.lookup(parameters, call.getPlayer());
             if (!results.getActionResults().isEmpty()) {
-                Prism.messenger.sendMessage(call.getPlayer(),Prism.messenger.playerHeaderMsg(
+                Prism.messenger.sendMessage(call.getPlayer(), Prism.messenger.playerHeaderMsg(
                         Il8nHelper.formatMessage("lookup-header-message",
                                 results.getTotalResults(), 1, results.getTotalPages())));
                 Prism.messenger.sendMessage(call.getPlayer(),
@@ -129,14 +129,14 @@ public class UndoCommand implements SubHandler {
                                 || plugin.getConfig().getBoolean("prism.messenger.always-show-extended")) {
                             am.showExtended();
                         }
-                        Prism.messenger.sendMessage(call.getPlayer(),Prism.messenger.playerMsg(am.getMessage()));
+                        Prism.messenger.sendMessage(call.getPlayer(), Prism.messenger.playerMsg(am.getMessage()));
                     }
                 } else {
-                    Prism.messenger.sendMessage(call.getPlayer(),Prism.messenger
+                    Prism.messenger.sendMessage(call.getPlayer(), Prism.messenger
                             .playerError("Pagination can't find anything. Do you have the right page number?"));
                 }
             } else {
-                Prism.messenger.sendMessage(call.getPlayer(),Prism.messenger.playerError(
+                Prism.messenger.sendMessage(call.getPlayer(), Prism.messenger.playerError(
                         "Nothing found." + ChatColor.GRAY + " Either you're missing something, or we are."));
             }
         }

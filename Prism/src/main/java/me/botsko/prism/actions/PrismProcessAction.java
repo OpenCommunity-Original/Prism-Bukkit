@@ -12,8 +12,9 @@ public class PrismProcessAction extends GenericAction {
 
     /**
      * Process.
+     *
      * @param processType PrismProcessType
-     * @param parameters String
+     * @param parameters  String
      */
     public void setProcessData(PrismProcessType processType, String parameters) {
 
@@ -44,6 +45,7 @@ public class PrismProcessAction extends GenericAction {
 
     /**
      * Get Type.
+     *
      * @return String
      */
     public String getProcessChildActionType() {

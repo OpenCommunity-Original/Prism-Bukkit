@@ -3,25 +3,12 @@ package me.botsko.prism.database.sql;
 import com.zaxxer.hikari.HikariDataSource;
 import me.botsko.prism.Prism;
 import me.botsko.prism.actionlibs.ActionRegistry;
-import me.botsko.prism.database.ActionReportQuery;
-import me.botsko.prism.database.BlockReportQuery;
-import me.botsko.prism.database.DeleteQuery;
-import me.botsko.prism.database.InsertQuery;
-import me.botsko.prism.database.PrismDataSource;
-import me.botsko.prism.database.SelectIdQuery;
-import me.botsko.prism.database.SelectProcessActionQuery;
-import me.botsko.prism.database.SelectQuery;
-import me.botsko.prism.database.SettingsQuery;
+import me.botsko.prism.database.*;
 import org.bukkit.configuration.ConfigurationSection;
 
 import javax.annotation.Nonnull;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Map;
 
 /**
@@ -39,6 +26,7 @@ public abstract class SqlPrismDataSource implements PrismDataSource {
 
     /**
      * Constructor.
+     *
      * @param section Config
      */
     public SqlPrismDataSource(ConfigurationSection section) {
@@ -77,6 +65,7 @@ public abstract class SqlPrismDataSource implements PrismDataSource {
 
     /**
      * Set the prefix for the data source.
+     *
      * @param prefix String.
      */
     public void setPrefix(String prefix) {
@@ -153,13 +142,14 @@ public abstract class SqlPrismDataSource implements PrismDataSource {
 
     /**
      * Setub Db.
+     *
      * @param actionRegistry ActionReg.
      */
     public void setupDatabase(ActionRegistry actionRegistry) {
         try (
-                Connection  conn = getConnection();
+                Connection conn = getConnection();
                 Statement st = conn.createStatement()
-                ) {
+        ) {
             String query = "CREATE TABLE IF NOT EXISTS `" + prefix + "actions` ("
                     + "`action_id` int(10) unsigned NOT NULL AUTO_INCREMENT," + "`action` varchar(25) NOT NULL,"
                     + "PRIMARY KEY (`action_id`)," + "UNIQUE KEY `action` (`action`)"
@@ -250,6 +240,7 @@ public abstract class SqlPrismDataSource implements PrismDataSource {
 
     /**
      * Add action to db.
+     *
      * @param actionName String
      */
     public void addActionName(String actionName) {
@@ -285,7 +276,7 @@ public abstract class SqlPrismDataSource implements PrismDataSource {
                 PreparedStatement s = conn.prepareStatement(
                         "SELECT action_id, action FROM " + prefix + "actions");
                 ResultSet rs = s.executeQuery()
-                ) {
+        ) {
             while (rs.next()) {
                 Prism.debug("Loaded " + rs.getString(2) + ", id:" + rs.getInt(1));
                 Prism.prismActions.put(rs.getString(2), rs.getInt(1));
@@ -301,6 +292,7 @@ public abstract class SqlPrismDataSource implements PrismDataSource {
 
     /**
      * Cache the world keys.
+     *
      * @param prismWorlds Map
      */
     @Override

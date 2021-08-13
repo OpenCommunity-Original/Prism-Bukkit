@@ -59,7 +59,7 @@ public class ReportCommand extends AbstractCommand {
 
         if (call.getArgs().length < 2) {
             Prism.messenger.sendMessage(call.getSender(),
-                  Prism.messenger.playerError(Il8nHelper.getMessage("report-error")));
+                    Prism.messenger.playerError(Il8nHelper.getMessage("report-error")));
             return;
         }
 
@@ -131,9 +131,9 @@ public class ReportCommand extends AbstractCommand {
                 Prism.messenger.playerHeaderMsg(Il8nHelper.getMessage("report-queue-header")));
 
         Prism.messenger.sendMessage(sender,
-              Prism.messenger.playerMsg(ReplaceableTextComponent.builder("report-actions-queue")
-                    .replace("<size>", RecordingQueue.getQueueSize())
-                    .build()));
+                Prism.messenger.playerMsg(ReplaceableTextComponent.builder("report-actions-queue")
+                        .replace("<size>", RecordingQueue.getQueueSize())
+                        .build()));
 
         final ConcurrentSkipListMap<Long, QueueStats.TaskRunInfo> runs = plugin.queueStats.getRecentRunCounts();
         if (runs.size() > 0) {
@@ -156,23 +156,23 @@ public class ReportCommand extends AbstractCommand {
                 Il8nHelper.getMessage("report-database-header")));
 
         Prism.messenger.sendMessage(sender, Prism.messenger
-              .playerMsg(ReplaceableTextComponent.builder("report-database-failureCount")
-                    .replace("<count>", RecordingManager.failedDbConnectionCount)
-                    .build()));
+                .playerMsg(ReplaceableTextComponent.builder("report-database-failureCount")
+                        .replace("<count>", RecordingManager.failedDbConnectionCount)
+                        .build()));
         Prism.messenger.sendMessage(sender,
-              Prism.messenger.playerMsg(ReplaceableTextComponent.builder("report-actions-queue")
-                    .replace("<size>", RecordingQueue.getQueueSize())
-                    .build()));
+                Prism.messenger.playerMsg(ReplaceableTextComponent.builder("report-actions-queue")
+                        .replace("<size>", RecordingQueue.getQueueSize())
+                        .build()));
         if (Prism.getPrismDataSource().getDataSource() instanceof HikariDataSource) {
             HikariDataSource ds = (HikariDataSource) Prism.getPrismDataSource().getDataSource();
             Prism.messenger.sendMessage(sender, Prism.messenger.playerMsg(ReplaceableTextComponent
-                  .builder("report-hikari-props")
-                  .replace("<total>", ds.getHikariPoolMXBean().getTotalConnections())
-                  .replace("<activeConnections>", ds.getHikariPoolMXBean().getActiveConnections())
-                  .replace("<idleConnections>", ds.getHikariPoolMXBean().getIdleConnections())
-                  .replace("<minIdleConnections>", ds.getMinimumIdle())
-                  .replace("<maxIdleConnections>", ds.getMaximumPoolSize())
-                  .build()));
+                    .builder("report-hikari-props")
+                    .replace("<total>", ds.getHikariPoolMXBean().getTotalConnections())
+                    .replace("<activeConnections>", ds.getHikariPoolMXBean().getActiveConnections())
+                    .replace("<idleConnections>", ds.getHikariPoolMXBean().getIdleConnections())
+                    .replace("<minIdleConnections>", ds.getMinimumIdle())
+                    .replace("<maxIdleConnections>", ds.getMaximumPoolSize())
+                    .build()));
         }
 
         boolean recorderActive = checkRecorderActive(plugin);
@@ -201,9 +201,9 @@ public class ReportCommand extends AbstractCommand {
             }
         } catch (final SQLException e) {
             Prism.messenger.sendMessage(sender, Prism.messenger
-                  .playerError(ReplaceableTextComponent.builder("exception-message")
-                        .replace("<message>", e.getLocalizedMessage())
-                        .build()));
+                    .playerError(ReplaceableTextComponent.builder("exception-message")
+                            .replace("<message>", e.getLocalizedMessage())
+                            .build()));
             e.printStackTrace();
         }
     }
@@ -213,11 +213,11 @@ public class ReportCommand extends AbstractCommand {
 
         // Process and validate all of the arguments
         final QueryParameters parameters = PreprocessArgs.process(plugin, call.getSender(), call.getArgs(),
-              PrismProcessType.LOOKUP, 3, !plugin.getConfig().getBoolean("prism.queries.never-use-defaults"));
+                PrismProcessType.LOOKUP, 3, !plugin.getConfig().getBoolean("prism.queries.never-use-defaults"));
         if (parameters == null) {
             Prism.getAudiences().sender(call.getSender())
                     .sendMessage(Identity.nil(),
-                          Prism.messenger.playerError(Il8nHelper.getMessage("report-player-error")));
+                            Prism.messenger.playerError(Il8nHelper.getMessage("report-player-error")));
             return;
         }
         // No actions
@@ -256,8 +256,8 @@ public class ReportCommand extends AbstractCommand {
 
         // Process and validate all of the arguments
         final QueryParameters parameters = PreprocessArgs.process(plugin, call.getSender(), call.getArgs(),
-              PrismProcessType.LOOKUP, 3,
-              !plugin.getConfig().getBoolean("prism.queries.never-use-defaults"));
+                PrismProcessType.LOOKUP, 3,
+                !plugin.getConfig().getBoolean("prism.queries.never-use-defaults"));
         if (parameters == null) {
             return;
         }

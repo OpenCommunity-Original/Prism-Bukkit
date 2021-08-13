@@ -23,6 +23,7 @@ public class SqlSelectProcessQuery extends SqlSelectQueryBuilder implements Sele
 
     /**
      * Constructor.
+     *
      * @param dataSource PrismDataSource
      */
     public SqlSelectProcessQuery(PrismDataSource dataSource) {

@@ -16,6 +16,7 @@ import java.sql.SQLException;
 public class SqlSelectIdQueryBuilder extends SqlSelectQueryBuilder implements SelectIdQuery {
     /**
      * Constructor.
+     *
      * @param dataSource PrismDataSource
      */
     private String select = "";

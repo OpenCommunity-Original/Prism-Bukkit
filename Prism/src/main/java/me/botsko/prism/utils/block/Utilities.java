@@ -42,22 +42,22 @@ public class Utilities {
     static {
         baseMaterials.put(Material.GRASS_BLOCK, Material.DIRT);
         baseMaterials.put(Material.MYCELIUM, Material.DIRT);
-        baseMaterials.put(Material.LIGHT_BLUE_CONCRETE_POWDER,Material.LIGHT_BLUE_CONCRETE);
-        baseMaterials.put(Material.LIGHT_GRAY_CONCRETE_POWDER,Material.LIGHT_GRAY_CONCRETE);
-        baseMaterials.put(Material.BLUE_CONCRETE_POWDER,Material.BLUE_CONCRETE);
-        baseMaterials.put(Material.RED_CONCRETE_POWDER,Material.RED_CONCRETE);
-        baseMaterials.put(Material.BLACK_CONCRETE_POWDER,Material.BLACK_CONCRETE);
-        baseMaterials.put(Material.MAGENTA_CONCRETE_POWDER,Material.MAGENTA_CONCRETE);
-        baseMaterials.put(Material.PURPLE_CONCRETE_POWDER,Material.PURPLE_CONCRETE);
-        baseMaterials.put(Material.GREEN_CONCRETE_POWDER,Material.GREEN_CONCRETE);
-        baseMaterials.put(Material.LIME_CONCRETE_POWDER,Material.LIME_CONCRETE);
-        baseMaterials.put(Material.WHITE_CONCRETE_POWDER,Material.WHITE_CONCRETE);
-        baseMaterials.put(Material.YELLOW_CONCRETE_POWDER,Material.YELLOW_CONCRETE);
-        baseMaterials.put(Material.BROWN_CONCRETE_POWDER,Material.BROWN_CONCRETE);
-        baseMaterials.put(Material.GRAY_CONCRETE_POWDER,Material.GRAY_CONCRETE);
-        baseMaterials.put(Material.ORANGE_CONCRETE_POWDER,Material.ORANGE_CONCRETE);
-        baseMaterials.put(Material.CYAN_CONCRETE_POWDER,Material.CYAN_CONCRETE);
-        baseMaterials.put(Material.PINK_CONCRETE_POWDER,Material.PINK_CONCRETE);
+        baseMaterials.put(Material.LIGHT_BLUE_CONCRETE_POWDER, Material.LIGHT_BLUE_CONCRETE);
+        baseMaterials.put(Material.LIGHT_GRAY_CONCRETE_POWDER, Material.LIGHT_GRAY_CONCRETE);
+        baseMaterials.put(Material.BLUE_CONCRETE_POWDER, Material.BLUE_CONCRETE);
+        baseMaterials.put(Material.RED_CONCRETE_POWDER, Material.RED_CONCRETE);
+        baseMaterials.put(Material.BLACK_CONCRETE_POWDER, Material.BLACK_CONCRETE);
+        baseMaterials.put(Material.MAGENTA_CONCRETE_POWDER, Material.MAGENTA_CONCRETE);
+        baseMaterials.put(Material.PURPLE_CONCRETE_POWDER, Material.PURPLE_CONCRETE);
+        baseMaterials.put(Material.GREEN_CONCRETE_POWDER, Material.GREEN_CONCRETE);
+        baseMaterials.put(Material.LIME_CONCRETE_POWDER, Material.LIME_CONCRETE);
+        baseMaterials.put(Material.WHITE_CONCRETE_POWDER, Material.WHITE_CONCRETE);
+        baseMaterials.put(Material.YELLOW_CONCRETE_POWDER, Material.YELLOW_CONCRETE);
+        baseMaterials.put(Material.BROWN_CONCRETE_POWDER, Material.BROWN_CONCRETE);
+        baseMaterials.put(Material.GRAY_CONCRETE_POWDER, Material.GRAY_CONCRETE);
+        baseMaterials.put(Material.ORANGE_CONCRETE_POWDER, Material.ORANGE_CONCRETE);
+        baseMaterials.put(Material.CYAN_CONCRETE_POWDER, Material.CYAN_CONCRETE);
+        baseMaterials.put(Material.PINK_CONCRETE_POWDER, Material.PINK_CONCRETE);
     }
 
     /**
@@ -107,7 +107,7 @@ public class Utilities {
                         if (data instanceof Waterlogged) {
                             final BlockState originalBlock = testLocation.getBlock().getState();
                             BlockData modified = testLocation.getBlock().getBlockData();
-                            ((Waterlogged)modified).setWaterlogged(false);
+                            ((Waterlogged) modified).setWaterlogged(false);
                             testLocation.getBlock().setBlockData(modified);
                             final BlockState newBlock = testLocation.getBlock().getState();
                             blockStateChanges.add(new BlockStateChangeImpl(originalBlock, newBlock));
@@ -128,7 +128,7 @@ public class Utilities {
      */
     @SuppressWarnings("WeakerAccess")
     public static ArrayList<BlockStateChange> removeMaterialsFromRadius(Material[] materials, final Location loc,
-                                                                            int radius) {
+                                                                        int radius) {
         final ArrayList<BlockStateChange> blockStateChanges = new ArrayList<>();
         if (loc != null && radius > 0 && materials != null && materials.length > 0) {
             final int x1 = loc.getBlockX();
@@ -175,8 +175,8 @@ public class Utilities {
     public static ArrayList<BlockStateChange> drain(Location loc, int radius) {
         final Material[] materials = {Material.LAVA, Material.WATER};
 
-        ArrayList<BlockStateChange> result =  removeMaterialsFromRadius(materials, loc, radius);
-        result.addAll(checkForWaterlogged(loc,radius));
+        ArrayList<BlockStateChange> result = removeMaterialsFromRadius(materials, loc, radius);
+        result.addAll(checkForWaterlogged(loc, radius));
         return result;
     }
 
@@ -210,7 +210,7 @@ public class Utilities {
      * @return if the material is acceptable to replace
      */
     public static boolean isAcceptableForBlockPlace(Material m) {
-        return  TabLibraryHelper.replaceableMaterials.isTagged(m);
+        return TabLibraryHelper.replaceableMaterials.isTagged(m);
     }
 
     /**
@@ -315,7 +315,7 @@ public class Utilities {
      */
     @SuppressWarnings("WeakerAccess")
     public static boolean isSideFaceDetachableMaterial(Material m) {
-        return  TabLibraryHelper.fallsOffWall.isTagged(m);
+        return TabLibraryHelper.fallsOffWall.isTagged(m);
     }
 
     /**
@@ -352,7 +352,7 @@ public class Utilities {
      **/
     @SuppressWarnings("WeakerAccess")
     public static boolean isTopFaceDetachableMaterial(Material m) {
-        return  TabLibraryHelper.fallsOffTop.isTagged(m);
+        return TabLibraryHelper.fallsOffTop.isTagged(m);
     }
 
     /**
@@ -363,7 +363,7 @@ public class Utilities {
      * @return boolean
      */
     public static boolean materialMeansBlockDetachment(Material m) {
-        return  TabLibraryHelper.detachingBlocks.contains(m);
+        return TabLibraryHelper.detachingBlocks.contains(m);
     }
 
     /**
@@ -487,11 +487,11 @@ public class Utilities {
 
         if (data instanceof Chest) {
             Chest chest = (Chest) data;
-            return handleChest(chest,block);
+            return handleChest(chest, block);
         } else if (data instanceof Bed) {
-            return handleBed((Bed) data,block);
+            return handleBed((Bed) data, block);
         } else if (data instanceof Bisected && !(data instanceof Stairs) && !(data instanceof TrapDoor)) {
-            return handleBisected((Bisected) data,block);
+            return handleBisected((Bisected) data, block);
         }
 
         return null;
@@ -563,7 +563,7 @@ public class Utilities {
      * @return bool
      */
     public static boolean canFlowBreakMaterial(Material m) {
-        return  TabLibraryHelper.flowBreaks.isTagged(m);
+        return TabLibraryHelper.flowBreaks.isTagged(m);
     }
 
     /**
@@ -641,7 +641,7 @@ public class Utilities {
      * @return bool
      */
     public static boolean isGrowableStructure(Material m) {
-        return  TabLibraryHelper.growableStructure.isTagged(m);
+        return TabLibraryHelper.growableStructure.isTagged(m);
     }
 
     /**
@@ -660,7 +660,7 @@ public class Utilities {
         Material coreMat1 = getMaterial(mat1);
         Material coreMat2 = getMaterial(mat2);
 
-        return  coreMat1.equals(coreMat2);
+        return coreMat1.equals(coreMat2);
     }
 
     @Nonnull

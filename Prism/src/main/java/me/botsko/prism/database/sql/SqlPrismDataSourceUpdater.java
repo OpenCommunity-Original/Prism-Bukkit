@@ -14,7 +14,7 @@ import java.sql.Statement;
  */
 public class SqlPrismDataSourceUpdater implements PrismDataSourceUpdater {
     private final PrismDataSource dataSource;
-    private static String  prefix = "prism_";
+    private static String prefix = "prism_";
 
     public SqlPrismDataSourceUpdater(PrismDataSource dataSource) {
         this.dataSource = dataSource;

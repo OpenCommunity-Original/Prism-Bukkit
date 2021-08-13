@@ -230,6 +230,6 @@ public class TypeUtils {
         for (int i = 1; i < rest; i++) {
             sb.append(" ");
         }
-        return str + sb.toString();
+        return str + sb;
     }
 }

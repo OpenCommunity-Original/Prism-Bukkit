@@ -17,10 +17,11 @@ public class PrismCustomPlayerActionEvent extends Event {
 
     /**
      * Constructor.
-     * @param plugin Plugin
+     *
+     * @param plugin         Plugin
      * @param actionTypeName String
-     * @param player Player
-     * @param message String
+     * @param player         Player
+     * @param message        String
      */
     public PrismCustomPlayerActionEvent(Plugin plugin, String actionTypeName, Player player, String message) {
         this.pluginName = plugin.getName();
@@ -31,6 +32,7 @@ public class PrismCustomPlayerActionEvent extends Event {
 
     /**
      * Get plugin name.
+     *
      * @return String
      */
     public String getPluginName() {
@@ -39,6 +41,7 @@ public class PrismCustomPlayerActionEvent extends Event {
 
     /**
      * Get Action Name.
+     *
      * @return String
      */
     public String getActionTypeName() {
@@ -47,6 +50,7 @@ public class PrismCustomPlayerActionEvent extends Event {
 
     /**
      * Get the Player.
+     *
      * @return the player
      */
     public Player getPlayer() {
@@ -55,6 +59,7 @@ public class PrismCustomPlayerActionEvent extends Event {
 
     /**
      * Get the message.
+     *
      * @return the message
      */
     public String getMessage() {

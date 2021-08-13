@@ -44,6 +44,7 @@ public class EntitySerializerFactory {
 
     /**
      * Get a serializer class for entity.
+     *
      * @param type EntityType
      * @return EntitySerializer
      */

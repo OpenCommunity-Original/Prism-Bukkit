@@ -9,14 +9,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 public class PreprocessArgs {
 
@@ -27,13 +21,14 @@ public class PreprocessArgs {
 
     /**
      * Create a set of parameters.
-     * @param plugin plugin.
-     * @param sender CommandSender
-     * @param args arg list
+     *
+     * @param plugin      plugin.
+     * @param sender      CommandSender
+     * @param args        arg list
      * @param processType {@link PrismProcessType}
-     * @param startAt int
-     * @param useDefaults  bool
-     * @param optional bool
+     * @param startAt     int
+     * @param useDefaults bool
+     * @param optional    bool
      * @return {@link QueryParameters}
      */
     public static QueryParameters process(Plugin plugin, CommandSender sender, String[] args,
@@ -139,13 +134,14 @@ public class PreprocessArgs {
 
     /**
      * Parse a set of params.
-     * @param plugin Prism
-     * @param sender CommandSender
-     * @param parameters QueryParameters
+     *
+     * @param plugin           Prism
+     * @param sender           CommandSender
+     * @param parameters       QueryParameters
      * @param registeredParams Map
-     * @param foundArgsNames Collection
-     * @param foundArgsList Collection
-     * @param arg String
+     * @param foundArgsNames   Collection
+     * @param foundArgsList    Collection
+     * @param arg              String
      * @return ParseResult.
      */
     private static ParseResult parseParam(Plugin plugin, CommandSender sender, QueryParameters parameters,
@@ -214,9 +210,10 @@ public class PreprocessArgs {
 
     /**
      * TabComplete the an argument.
-     * @param sender  CommandSender
-     * @param args String[]
-     * @param arg int
+     *
+     * @param sender CommandSender
+     * @param args   String[]
+     * @param arg    int
      * @return List
      */
     public static List<String> complete(CommandSender sender, String[] args, int arg) {
@@ -230,8 +227,9 @@ public class PreprocessArgs {
 
     /**
      * TabComplete the last argument.
-     * @param sender  CommandSender
-     * @param args String[]
+     *
+     * @param sender CommandSender
+     * @param args   String[]
      * @return List
      */
     public static List<String> complete(CommandSender sender, String[] args) {
@@ -240,8 +238,9 @@ public class PreprocessArgs {
 
     /**
      * TabComplete the an argument.
-     * @param sender  CommandSender
-     * @param arg String
+     *
+     * @param sender CommandSender
+     * @param arg    String
      * @return List
      */
     public static List<String> complete(CommandSender sender, String arg) {
@@ -264,6 +263,7 @@ public class PreprocessArgs {
 
     /**
      * Enum to show results of a parse.
+     *
      * @author botskonet
      */
     private enum ParseResult {

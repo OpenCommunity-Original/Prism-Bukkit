@@ -136,9 +136,9 @@ public abstract class GenericAction implements Handler {
         long period = 24 * 60 * 60;
 
         final long[] diff = {
-              diffInSeconds / period,
-              (diffInSeconds / (period /= 24)) % 24,
-              (diffInSeconds / (period /= 60)) % 60
+                diffInSeconds / period,
+                (diffInSeconds / (period /= 24)) % 24,
+                (diffInSeconds / (period /= 60)) % 60
         };
 
         StringBuilder timeAgo = new StringBuilder();
@@ -432,9 +432,9 @@ public abstract class GenericAction implements Handler {
      * Currently these methods are not made available in the api.  As they perform world
      * changes.  This can be reviewed later.
      *
-     * @param player Player
+     * @param player     Player
      * @param parameters PrismParameters
-     * @param isPreview boolean
+     * @param isPreview  boolean
      * @return ChangeResult
      */
     public ChangeResult applyRollback(Player player, PrismParameters parameters, boolean isPreview) {
@@ -444,11 +444,11 @@ public abstract class GenericAction implements Handler {
     /**
      * See above.
      *
-     * @see GenericAction#applyRollback(Player, PrismParameters, boolean)
-     * @param player Player
+     * @param player     Player
      * @param parameters PrismParameters
-     * @param isPreview boolean
+     * @param isPreview  boolean
      * @return ChangeResult
+     * @see GenericAction#applyRollback(Player, PrismParameters, boolean)
      */
     public ChangeResult applyRestore(Player player, PrismParameters parameters, boolean isPreview) {
         return null;
@@ -457,11 +457,11 @@ public abstract class GenericAction implements Handler {
     /**
      * See above.
      *
-     * @see GenericAction#applyRollback(Player, PrismParameters, boolean)
-     * @param player Player
+     * @param player     Player
      * @param parameters PrismParameters
-     * @param isPreview boolean
+     * @param isPreview  boolean
      * @return ChangeResult
+     * @see GenericAction#applyRollback(Player, PrismParameters, boolean)
      */
     public ChangeResult applyUndo(Player player, PrismParameters parameters, boolean isPreview) {
         return null;
@@ -470,11 +470,11 @@ public abstract class GenericAction implements Handler {
     /**
      * See above.
      *
-     * @see GenericAction#applyRollback(Player, PrismParameters, boolean)
-     * @param player Player
+     * @param player     Player
      * @param parameters PrismParameters
-     * @param isPreview boolean
+     * @param isPreview  boolean
      * @return ChangeResult
+     * @see GenericAction#applyRollback(Player, PrismParameters, boolean)
      */
     public ChangeResult applyDeferred(Player player, PrismParameters parameters, boolean isPreview) {
         return null;

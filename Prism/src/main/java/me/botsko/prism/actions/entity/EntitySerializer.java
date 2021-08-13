@@ -4,12 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import me.botsko.prism.utils.EntityUtils;
 import me.botsko.prism.utils.MiscUtils;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Ageable;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Projectile;
-import org.bukkit.entity.Sittable;
-import org.bukkit.entity.Tameable;
+import org.bukkit.entity.*;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 
@@ -46,6 +41,7 @@ public class EntitySerializer {
 
     /**
      * Serialize entity.
+     *
      * @param entity Entity.
      */
     public final void serialize(Entity entity) {
@@ -94,6 +90,7 @@ public class EntitySerializer {
 
     /**
      * Deserialize.
+     *
      * @param entity Entity
      */
     public final void deserialize(Entity entity) {

@@ -14,6 +14,7 @@ public class EntityTravelAction extends GenericAction {
 
     /**
      * Set entity.
+     *
      * @param entity Entity.
      */
     public void setEntity(Entity entity) {
@@ -28,6 +29,7 @@ public class EntityTravelAction extends GenericAction {
 
     /**
      * Set Location .
+     *
      * @param to Location.
      */
     public void setToLocation(Location to) {
@@ -40,6 +42,7 @@ public class EntityTravelAction extends GenericAction {
 
     /**
      * Set cause.
+     *
      * @param cause TeleportCause
      */
     public void setCause(TeleportCause cause) {
@@ -67,6 +70,7 @@ public class EntityTravelAction extends GenericAction {
 
     /**
      * Set TravelActionData.
+     *
      * @return EntityTravelActionData
      */
     @SuppressWarnings("unused")
@@ -76,6 +80,7 @@ public class EntityTravelAction extends GenericAction {
 
     /**
      * Get nice name.
+     *
      * @return String
      */
     @Override

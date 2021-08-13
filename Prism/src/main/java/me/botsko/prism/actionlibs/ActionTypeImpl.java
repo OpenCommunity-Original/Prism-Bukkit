@@ -66,7 +66,8 @@ public class ActionTypeImpl implements ActionType {
     }
 
     /**
-     *  Checks if an Action requires a specific handler.
+     * Checks if an Action requires a specific handler.
+     *
      * @param handler Handler
      * @return boolean
      */
@@ -85,6 +86,7 @@ public class ActionTypeImpl implements ActionType {
 
     /**
      * Get the Class family name.
+     *
      * @return String
      */
     String getFamilyName() {
@@ -97,6 +99,7 @@ public class ActionTypeImpl implements ActionType {
 
     /**
      * Get the Class Short name.
+     *
      * @return String
      */
     public String getShortName() {

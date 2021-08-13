@@ -12,8 +12,9 @@ public class PrismPlayer {
 
     /**
      * Constructor.
+     *
      * @param playerId int
-     * @param player Player
+     * @param player   Player
      */
     @SuppressWarnings("unused")
     public PrismPlayer(int playerId, Player player) {
@@ -22,9 +23,10 @@ public class PrismPlayer {
 
     /**
      * Constructor.
-     * @param playerId int
+     *
+     * @param playerId   int
      * @param playerUuid Uuid
-     * @param player Player
+     * @param player     Player
      */
     public PrismPlayer(int playerId, UUID playerUuid, String player) {
         this.playerId = playerId;
@@ -34,6 +36,7 @@ public class PrismPlayer {
 
     /**
      * Get id.
+     *
      * @return id
      */
     public int getId() {
@@ -52,6 +55,7 @@ public class PrismPlayer {
 
     /**
      * Get Name.
+     *
      * @return String
      */
     public String getName() {

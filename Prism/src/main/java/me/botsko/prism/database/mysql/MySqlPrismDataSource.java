@@ -12,11 +12,7 @@ import org.bukkit.configuration.ConfigurationSection;
 
 import javax.annotation.Nonnull;
 import java.io.File;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.SQLNonTransientConnectionException;
+import java.sql.*;
 import java.util.HashMap;
 
 /**
@@ -83,7 +79,7 @@ public class MySqlPrismDataSource extends SqlPrismDataSource {
             dbConfig.setMinimumIdle(minIdle);
         }
         if (!propFile.exists()) {
-            HikariHelper.createPropertiesFile(propFile,dbConfig,true);
+            HikariHelper.createPropertiesFile(propFile, dbConfig, true);
         }
     }
 

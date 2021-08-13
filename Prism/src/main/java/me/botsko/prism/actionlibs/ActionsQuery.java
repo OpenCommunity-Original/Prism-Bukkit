@@ -155,6 +155,7 @@ public class ActionsQuery {
 
     /**
      * Get min and max in 1 go.
+     *
      * @param parameters QueryParams
      * @return array with minID at 0 and maxID at 1
      */

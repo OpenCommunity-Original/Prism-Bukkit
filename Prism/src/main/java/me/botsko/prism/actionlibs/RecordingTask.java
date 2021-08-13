@@ -138,7 +138,7 @@ public class RecordingTask implements Runnable {
             // Save the current count to the queue for short historical data
             long batchProcessedEnd = System.currentTimeMillis();
             long batchRunTime = batchProcessedEnd - batchDoneTime;
-            plugin.queueStats.addRunInfo(new QueueStats.TaskRunInfo(actionsRecorded,batchingTime,batchRunTime));
+            plugin.queueStats.addRunInfo(new QueueStats.TaskRunInfo(actionsRecorded, batchingTime, batchRunTime));
         }
     }
 

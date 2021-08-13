@@ -20,6 +20,7 @@ public class HangingItemAction extends GenericAction {
 
     /**
      * Constructor.
+     *
      * @param hanging Hanging item
      */
     public void setHanging(Hanging hanging) {
@@ -97,9 +98,10 @@ public class HangingItemAction extends GenericAction {
 
     /**
      * Get A change result.
-     * @param player Player
+     *
+     * @param player     Player
      * @param parameters Query params
-     * @param isPreview is preview.
+     * @param isPreview  is preview.
      * @return ChangeResult
      * @todo I am not sure this actual is used during preview?? also no rollback info is saved to undo this.
      */

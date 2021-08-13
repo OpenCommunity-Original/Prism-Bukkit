@@ -36,6 +36,6 @@ public class EventHelper {
 
     public static PrismExtinguishEvent createExtinguishEvent(ArrayList<BlockStateChange> blockStateChanges,
                                                              Player onBehalfOf, int radius) {
-        return new PrismExtinguishEvent(blockStateChanges,onBehalfOf,radius);
+        return new PrismExtinguishEvent(blockStateChanges, onBehalfOf, radius);
     }
 }

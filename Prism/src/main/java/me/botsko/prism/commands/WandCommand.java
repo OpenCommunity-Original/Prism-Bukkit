@@ -6,12 +6,7 @@ import me.botsko.prism.commandlibs.CallInfo;
 import me.botsko.prism.settings.Settings;
 import me.botsko.prism.utils.InventoryUtils;
 import me.botsko.prism.utils.ItemUtils;
-import me.botsko.prism.wands.InspectorWand;
-import me.botsko.prism.wands.ProfileWand;
-import me.botsko.prism.wands.QueryWandBase;
-import me.botsko.prism.wands.RestoreWand;
-import me.botsko.prism.wands.RollbackWand;
-import me.botsko.prism.wands.Wand;
+import me.botsko.prism.wands.*;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -110,7 +105,7 @@ public class WandCommand extends AbstractCommand {
             Prism.messenger.sendMessage(call.getPlayer(),
                     Prism.messenger.playerError(Il8nHelper.getMessage("wand-bad")
                             .replaceText(Pattern.compile("<itemName>"),
-                                  builder -> Component.text().content(itemNameFinal))));
+                                    builder -> Component.text().content(itemNameFinal))));
             return;
         }
 
@@ -260,14 +255,14 @@ public class WandCommand extends AbstractCommand {
         TextComponent out = Prism.messenger
                 .playerHeaderMsg(Il8nHelper.getMessage(wandStatusMessageKey)
                         .replaceText(Pattern.compile("<status>"),
-                              builder -> Component.text().append(state)));
+                                builder -> Component.text().append(state)));
         if (status) {
             out.append(Component.newline())
                     .append(Il8nHelper.getMessage("wand-item-type")
                             .replaceText(Pattern.compile("<itemType>"),
-                                  builder -> Component.text().content(wandType))
+                                    builder -> Component.text().content(wandType))
                             .replaceText(Pattern.compile("<parameters"),
-                                  builder -> Component.text().content(parameters)));
+                                    builder -> Component.text().content(parameters)));
         }
         Prism.messenger.sendMessage(sender, out);
 

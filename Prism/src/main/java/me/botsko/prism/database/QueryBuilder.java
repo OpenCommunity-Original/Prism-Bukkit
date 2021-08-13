@@ -91,6 +91,7 @@ public abstract class QueryBuilder {
 
     /**
      * Add a condition.
+     *
      * @param condition String.
      */
     protected void addCondition(String condition) {

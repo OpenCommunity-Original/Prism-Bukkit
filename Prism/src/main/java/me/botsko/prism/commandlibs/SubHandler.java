@@ -10,12 +10,14 @@ public interface SubHandler {
 
     /**
      * Returns a short help message.
+     *
      * @return String
      */
     String[] getHelp();
 
     /**
      * This should return the web reference to documentation.
+     *
      * @return String
      */
     String getRef();

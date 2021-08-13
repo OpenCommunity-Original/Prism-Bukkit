@@ -8,17 +8,14 @@ import org.bukkit.entity.Boat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.minecart.ExplosiveMinecart;
-import org.bukkit.entity.minecart.HopperMinecart;
-import org.bukkit.entity.minecart.PoweredMinecart;
-import org.bukkit.entity.minecart.SpawnerMinecart;
-import org.bukkit.entity.minecart.StorageMinecart;
+import org.bukkit.entity.minecart.*;
 
 public class VehicleAction extends GenericAction {
     private String vehicleName;
 
     /**
      * Set the vehicle.
+     *
      * @param vehicle Entity
      */
     public void setVehicle(Entity vehicle) {

@@ -16,6 +16,7 @@ public class RollbackWand extends QueryWandBase {
 
     /**
      * Constructor.
+     *
      * @param plugin Prism
      */
     public RollbackWand(Prism plugin) {
@@ -43,7 +44,7 @@ public class RollbackWand extends QueryWandBase {
     protected void rollback(Player player, Location loc) {
 
         final Block block = loc.getBlock();
-        QueryParameters params = checkQueryParams(block,parameters,player);
+        QueryParameters params = checkQueryParams(block, parameters, player);
         params.setProcessType(PrismProcessType.ROLLBACK);
         final QueryResult results = getResult(params, player);
         if (!results.getActionResults().isEmpty()) {

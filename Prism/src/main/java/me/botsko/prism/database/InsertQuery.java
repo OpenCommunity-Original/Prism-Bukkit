@@ -9,6 +9,7 @@ import me.botsko.prism.api.actions.Handler;
 public interface InsertQuery {
     /**
      * Returns the id of the action.
+     *
      * @param a Handler
      * @return long
      */

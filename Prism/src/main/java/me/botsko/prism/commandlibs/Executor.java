@@ -30,8 +30,9 @@ public class Executor implements CommandExecutor, TabCompleter {
 
     /**
      * Constructor.
-     * @param plugin Prism
-     * @param mode String
+     *
+     * @param plugin   Prism
+     * @param mode     String
      * @param permBase permission base
      */
     public Executor(Plugin plugin, @Nullable String mode, String permBase) {
@@ -39,7 +40,7 @@ public class Executor implements CommandExecutor, TabCompleter {
         this.plugin = plugin;
     }
 
-    public final Map<String,SubCommand> getSubCommands() {
+    public final Map<String, SubCommand> getSubCommands() {
         return subCommands;
     }
 
@@ -102,9 +103,10 @@ public class Executor implements CommandExecutor, TabCompleter {
 
     /**
      * Add a sub command.
-     * @param commandAliases String[] alias list
+     *
+     * @param commandAliases  String[] alias list
      * @param permissionNodes String[] permissions
-     * @param handler SubHandler
+     * @param handler         SubHandler
      * @return SubCommand
      */
     private SubCommand addSub(String[] commandAliases, String[] permissionNodes,
@@ -118,7 +120,8 @@ public class Executor implements CommandExecutor, TabCompleter {
 
     /**
      * Add a sub command with a null handler.
-     * @param commandAliases String[] alias list
+     *
+     * @param commandAliases  String[] alias list
      * @param permissionNodes String[] permissions
      * @return SubCommand
      */
@@ -128,6 +131,7 @@ public class Executor implements CommandExecutor, TabCompleter {
 
     /**
      * Add a sub command with a single permission.
+     *
      * @param commandAliases String[] alias list
      * @param permissionNode String permission
      * @return SubCommand
@@ -138,7 +142,8 @@ public class Executor implements CommandExecutor, TabCompleter {
 
     /**
      * Add a sub command with a single alias and null handler.
-     * @param commandAlias String alias list
+     *
+     * @param commandAlias    String alias list
      * @param permissionNodes String[] permissions
      * @return SubCommand
      */
@@ -149,7 +154,8 @@ public class Executor implements CommandExecutor, TabCompleter {
 
     /**
      * Add a sub command with a single alias and permission and null handler.
-     * @param commandAlias String alias
+     *
+     * @param commandAlias   String alias
      * @param permissionNode String permissions
      * @return SubCommand
      */

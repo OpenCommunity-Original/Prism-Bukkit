@@ -73,7 +73,7 @@ public class UseMonitor {
      * Check if use alert should be canceled.
      *
      * @param player Player causing the alert
-     * @return       true if alert should be canceled
+     * @return true if alert should be canceled
      */
     private boolean checkFeatureShouldCancel(Player player) {
 

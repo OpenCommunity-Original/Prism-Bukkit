@@ -11,7 +11,6 @@ import org.bukkit.configuration.ConfigurationSection;
 import java.io.File;
 
 
-
 /**
  * Created for use for the Add5tar MC Minecraft server
  * Created by benjamincharlton on 1/01/2021.

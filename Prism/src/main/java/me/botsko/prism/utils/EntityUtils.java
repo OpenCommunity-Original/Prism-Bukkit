@@ -5,11 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.ExperienceOrb;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
+import org.bukkit.entity.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +17,7 @@ public class EntityUtils {
 
     /**
      * Get Offline player. Should run Async.
+     *
      * @param uuidOrName String
      * @return OfflinePlayer
      */
@@ -43,6 +40,7 @@ public class EntityUtils {
 
     /**
      * Get Uuid - should be handled Async as this may do a remote call.
+     *
      * @param uuidOrName String
      * @return Uuid.
      */
@@ -64,6 +62,7 @@ public class EntityUtils {
 
     /**
      * Projectile Description.
+     *
      * @param source Projectile
      * @return String.
      */
@@ -135,9 +134,9 @@ public class EntityUtils {
     /**
      * Whether or not an entity is within a cube radius.
      *
-     * @param loc1 Location
+     * @param loc1   Location
      * @param radius int
-     * @param loc2 Location
+     * @param loc2   Location
      * @return in Cube.
      */
     public static boolean inCube(Location loc1, int radius, Location loc2) {

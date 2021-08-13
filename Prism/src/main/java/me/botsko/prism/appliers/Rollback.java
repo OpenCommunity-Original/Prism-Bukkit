@@ -45,7 +45,7 @@ public class Rollback extends Preview {
                     final ArrayList<BlockStateChange> blockStateChanges = Utilities.extinguish(player.getLocation(),
                             parameters.getRadius());
                     if (!blockStateChanges.isEmpty()) {
-                        Prism.messenger.sendMessage(player,Prism.messenger
+                        Prism.messenger.sendMessage(player, Prism.messenger
                                 .playerHeaderMsg(Il8nHelper.getMessage("fire-extinguished-sucess")));
                     }
                 }
@@ -58,8 +58,8 @@ public class Rollback extends Preview {
                 if (!parameters.hasFlag(Flag.NO_ITEMCLEAR)) {
                     final int removed = EntityUtils.removeNearbyItemDrops(player, parameters.getRadius());
                     if (removed > 0) {
-                        Prism.messenger.sendMessage(player,Prism.messenger.playerHeaderMsg(
-                              Il8nHelper.formatMessage("rollback-removedDrops",removed)));
+                        Prism.messenger.sendMessage(player, Prism.messenger.playerHeaderMsg(
+                                Il8nHelper.formatMessage("rollback-removedDrops", removed)));
                     }
                 }
             }

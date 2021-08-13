@@ -19,6 +19,7 @@ public class ReplaceableTextComponent {
     /**
      * Helper Class to assist with replacement during Il8n.  May be removed when Adventure library
      * provides its own methods.
+     *
      * @param component Component.
      */
     private ReplaceableTextComponent(Component component) {
@@ -27,6 +28,7 @@ public class ReplaceableTextComponent {
 
     /**
      * Static builder.
+     *
      * @param key Il8n key
      * @return ReplaceableTextComponent
      */
@@ -44,7 +46,7 @@ public class ReplaceableTextComponent {
      */
     public ReplaceableTextComponent replace(String key, String content, Style withStyle) {
         this.component = component.replaceText(Pattern.compile(key),
-            builder -> Component.text().content(content).style(withStyle));
+                builder -> Component.text().content(content).style(withStyle));
         return this;
     }
 
@@ -106,12 +108,13 @@ public class ReplaceableTextComponent {
      */
     public ReplaceableTextComponent replaceFirst(String key, String content) {
         this.component = component.replaceFirstText(Pattern.compile(key),
-            builder -> Component.text().content(content));
+                builder -> Component.text().content(content));
         return this;
     }
 
     /**
      * Build the Component.
+     *
      * @return Component
      */
     public Component build() {

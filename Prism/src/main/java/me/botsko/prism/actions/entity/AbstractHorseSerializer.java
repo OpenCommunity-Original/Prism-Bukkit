@@ -4,12 +4,7 @@ import me.botsko.prism.utils.ItemUtils;
 import me.botsko.prism.utils.MiscUtils;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
-import org.bukkit.entity.AbstractHorse;
-import org.bukkit.entity.ChestedHorse;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Horse;
-import org.bukkit.entity.Llama;
+import org.bukkit.entity.*;
 
 public class AbstractHorseSerializer extends EntitySerializer {
     protected String horseColor = null;

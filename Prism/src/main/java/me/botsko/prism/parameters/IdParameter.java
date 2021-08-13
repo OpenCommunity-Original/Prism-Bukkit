@@ -16,7 +16,7 @@ public class IdParameter extends SimplePrismParameterHandler {
     }
 
     /**
-     *{@inheritDoc}
+     * {@inheritDoc}
      */
     @Override
     public void process(QueryParameters query, String alias, String input, CommandSender sender) {

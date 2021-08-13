@@ -11,8 +11,9 @@ public class BlockStateChangeImpl implements BlockStateChange {
 
     /**
      * Constructor.
+     *
      * @param originalBlock BlockState
-     * @param newBlock BlockState
+     * @param newBlock      BlockState
      */
     public BlockStateChangeImpl(BlockState originalBlock, BlockState newBlock) {
         this.originalBlock = originalBlock;
@@ -21,6 +22,7 @@ public class BlockStateChangeImpl implements BlockStateChange {
 
     /**
      * Get Original.
+     *
      * @return the originalBlock
      */
     public BlockState getOriginalBlock() {
@@ -29,6 +31,7 @@ public class BlockStateChangeImpl implements BlockStateChange {
 
     /**
      * Get new.
+     *
      * @return the newBlock
      */
     public BlockState getNewBlock() {

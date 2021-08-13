@@ -12,12 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.enchantment.EnchantItemEvent;
-import org.bukkit.event.inventory.CraftItemEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryPickupItemEvent;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.inventory.PrepareItemCraftEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.PlayerItemBreakEvent;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
@@ -39,6 +34,7 @@ public class PrismInventoryEvents implements Listener {
 
     /**
      * Constructor.
+     *
      * @param plugin Prism
      */
     public PrismInventoryEvents(Prism plugin) {
@@ -51,6 +47,7 @@ public class PrismInventoryEvents implements Listener {
 
     /**
      * InventoryPickupItemEvent.
+     *
      * @param event InventoryPickupItemEvent
      */
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
@@ -137,9 +134,10 @@ public class PrismInventoryEvents implements Listener {
 
     /**
      * Handle Crafting.
+     *
      * @param prepareItemCraftEvent event.
      */
-    @EventHandler(priority = EventPriority.MONITOR,ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onPrepareCraftItem(PrepareItemCraftEvent prepareItemCraftEvent) {
         if (Prism.getIgnore().event("craft-item")) {
             return;
@@ -152,7 +150,7 @@ public class PrismInventoryEvents implements Listener {
         }).collect(Collectors.toList());
         if (recordable.size() > 0) {
             //todo
-            Prism.debug("PrepareCraftEvent: " + prepareItemCraftEvent.toString());
+            Prism.debug("PrepareCraftEvent: " + prepareItemCraftEvent);
         }
 
     }
@@ -215,7 +213,7 @@ public class PrismInventoryEvents implements Listener {
             return;
         }
         Prism.debug("HELD:" + ((heldItem != null) ? heldItem.toString() : "NULL"));
-        Prism.debug("SLOT:" +  slotItem.toString());
+        Prism.debug("SLOT:" + slotItem);
 
         switch (event.getClick()) {
             // IGNORE BOTTOM
@@ -235,7 +233,7 @@ public class PrismInventoryEvents implements Listener {
                         }
                         if (slotItem.getType().equals(heldItem.getType())) {
                             int slotQty = slotItem.getAmount();
-                            amount = Math.min(maxStack - slotQty,heldItem.getAmount());
+                            amount = Math.min(maxStack - slotQty, heldItem.getAmount());
                         }
                         if (amount > 0) {
                             RecordingQueue.addToQueue(ActionFactory.createItemStack(INSERT, heldItem, amount, slot,
@@ -245,11 +243,11 @@ public class PrismInventoryEvents implements Listener {
                         }
                         if (slotItem.getType() != Material.AIR && !slotItem.getType().equals(heldItem.getType())) {
                             // its a switch.
-                            RecordingQueue.addToQueue(ActionFactory.createItemStack(INSERT,heldItem,
-                                    heldItem.getAmount(),slot,null,containerLoc,player));
+                            RecordingQueue.addToQueue(ActionFactory.createItemStack(INSERT, heldItem,
+                                    heldItem.getAmount(), slot, null, containerLoc, player));
                             Prism.debug("ACTION: " + event.getAction().name());
-                            RecordingQueue.addToQueue(ActionFactory.createItemStack(REMOVE,slotItem,
-                                    slotItem.getAmount(),slot,null,containerLoc,player));
+                            RecordingQueue.addToQueue(ActionFactory.createItemStack(REMOVE, slotItem,
+                                    slotItem.getAmount(), slot, null, containerLoc, player));
                         }
                     }
                 }
@@ -311,7 +309,7 @@ public class PrismInventoryEvents implements Listener {
                     if (is != null && (is.getType() != Material.AIR || is.equals(heldItem))) {
                         size += is.getAmount();
                     }
-                    amount = recordDeductTransfer(REMOVE,size,amount,heldItem,containerLoc,i,player,event);
+                    amount = recordDeductTransfer(REMOVE, size, amount, heldItem, containerLoc, i, player, event);
                     if (amount <= 0) {
                         break;
                     }
@@ -358,8 +356,8 @@ public class PrismInventoryEvents implements Listener {
                         ItemStack is = contents[i];
 
                         if (slotItem.isSimilar(is)) {
-                            amount = recordDeductTransfer(INSERT,stackSize - is.getAmount(),amount,slotItem,
-                                    containerLoc,i,player,event);
+                            amount = recordDeductTransfer(INSERT, stackSize - is.getAmount(), amount, slotItem,
+                                    containerLoc, i, player, event);
                             if (amount <= 0) {
                                 break;
                             }
@@ -372,8 +370,8 @@ public class PrismInventoryEvents implements Listener {
                             ItemStack is = contents[i];
 
                             if (is == null || is.getType() == Material.AIR) {
-                                amount = recordDeductTransfer(INSERT,stackSize,amount,slotItem,
-                                        containerLoc,i,player,event);
+                                amount = recordDeductTransfer(INSERT, stackSize, amount, slotItem,
+                                        containerLoc, i, player, event);
                                 if (amount <= 0) {
                                     break;
                                 }
@@ -428,15 +426,16 @@ public class PrismInventoryEvents implements Listener {
     /**
      * Tracks item breakage. Cant be rolled back.  At this point the item damage is not 0 however it will be set 0 after
      * event completes - Reported item durability will be the durability before the event.
+     *
      * @param event PlayerItemBreakEvent.
      */
-    @EventHandler(ignoreCancelled = true,priority = EventPriority.MONITOR)
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     public void onItemBreak(PlayerItemBreakEvent event) {
         if (!trackingBreaks) {
             return;
         }
         ItemStack item = event.getBrokenItem();
-        Handler h = ActionFactory.createItemStack(BREAK,item,null, event.getPlayer().getLocation(),event.getPlayer());
+        Handler h = ActionFactory.createItemStack(BREAK, item, null, event.getPlayer().getLocation(), event.getPlayer());
         RecordingQueue.addToQueue(h);
     }
 
