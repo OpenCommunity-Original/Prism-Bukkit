@@ -2,9 +2,9 @@ name: Prism
 main: me.botsko.prism.Prism
 version: ${plugin.version}
 softdepend: [WorldEdit,DripReporter]
-author: AddstarMC, Envel
-authors: [add5tar, Narimm, viveleroi]
-website: https://github.com/AddstarMC/Prism-Bukkit/wiki
+author: OpenCommunity
+authors: [add5tar, Narimm, viveleroi, Envel]
+website: https://prism-bukkit.readthedocs.io/en/latest/commands/preview.html#preview
 api-version: ${spigot.api.version}
 commands:
    prism:
