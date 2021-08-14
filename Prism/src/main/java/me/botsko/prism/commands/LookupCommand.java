@@ -22,6 +22,8 @@ import org.bukkit.command.CommandSender;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static org.apache.logging.log4j.LogManager.getLogger;
+
 public class LookupCommand implements SubHandler {
 
 
@@ -105,7 +107,7 @@ public class LookupCommand implements SubHandler {
                     Prism.messenger.sendMessage(player,
                             Prism.messenger.playerHeaderMsg(
                                     Il8nHelper.formatMessage("lookup-header-message",
-                                            results.getTotalResults(), 1, results.getTotalPages())));
+                                            results.getTotalResults(),1,results.getTotalPages())));
                     if ((defaultsReminder.length() > 0) && isSender) {
                         Prism.messenger.sendMessage(player, Prism.messenger.playerSubduedHeaderMsg(
                                 Component.text(defaultsReminder.toString())));
