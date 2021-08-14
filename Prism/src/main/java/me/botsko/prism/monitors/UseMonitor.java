@@ -1,5 +1,6 @@
 package me.botsko.prism.monitors;
 
+import me.botsko.prism.Il8nHelper;
 import me.botsko.prism.Prism;
 import me.botsko.prism.utils.MiscUtils;
 import net.kyori.adventure.text.Component;
@@ -52,11 +53,11 @@ public class UseMonitor {
         countedEvents.put(key, count);
         TextComponent out = Component.text(playername + " " + msg)
                 .color(NamedTextColor.GRAY);
-        if (count == 5) {
-            out = out.append(Component.text(" - pausing warnings.")
+        if (count == 3) {
+            out = out.append(Component.text( " " + Il8nHelper.getRawMessage("pausing-warnings"))
                     .color(NamedTextColor.GRAY));
         }
-        if (count <= 5) {
+        if (count <= 3) {
             // Alert staff
             plugin.alertPlayers(null, out, alertPerm);
             // Log to console

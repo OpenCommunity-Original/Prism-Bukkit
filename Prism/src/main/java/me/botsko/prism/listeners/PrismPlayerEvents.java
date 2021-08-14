@@ -1,5 +1,6 @@
 package me.botsko.prism.listeners;
 
+import me.botsko.prism.Il8nHelper;
 import me.botsko.prism.Prism;
 import me.botsko.prism.actionlibs.ActionFactory;
 import me.botsko.prism.actionlibs.RecordingQueue;
@@ -291,7 +292,7 @@ public class PrismPlayerEvents implements Listener {
         if (plugin.getConfig().getBoolean("prism.alerts.uses.lava") && event.getBucket() == Material.LAVA_BUCKET
                 && !player.hasPermission("prism.alerts.use.lavabucket.ignore")
                 && !player.hasPermission("prism.alerts.ignore")) {
-            plugin.useMonitor.alertOnItemUse(player, "poured lava", "prism.alerts.use.lavabucket");
+            plugin.useMonitor.alertOnItemUse(player, Il8nHelper.getRawMessage("use-lava"), "prism.alerts.use.lavabucket");
         }
     }
 

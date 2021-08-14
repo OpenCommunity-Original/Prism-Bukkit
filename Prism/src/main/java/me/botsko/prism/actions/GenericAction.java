@@ -2,6 +2,7 @@ package me.botsko.prism.actions;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import me.botsko.prism.Il8nHelper;
 import me.botsko.prism.Prism;
 import me.botsko.prism.actionlibs.ActionTypeImpl;
 import me.botsko.prism.api.ChangeResult;
@@ -130,7 +131,7 @@ public abstract class GenericAction implements Handler {
         long diffInSeconds = System.currentTimeMillis() / 1000 - epoch;
 
         if (diffInSeconds < 60) {
-            return "just now";
+            return Il8nHelper.getRawMessage("just-now");
         }
 
         long period = 24 * 60 * 60;

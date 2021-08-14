@@ -30,6 +30,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -739,9 +740,11 @@ public class Prism extends JavaPlugin implements PrismApi {
         for (final Player p : getServer().getOnlinePlayers()) {
             if ((!p.equals(player) || getConfig().getBoolean("prism.alerts.alert-player-about-self"))
                     && (p.hasPermission("prism.alerts") || (alertPerm != null && p.hasPermission(alertPerm)))) {
-                TextComponent prefix = Il8nHelper.getMessage("alert-prefix" + " ")
+                TextComponent prefix = Il8nHelper.formatMessage("alert-prefix")
                         .color(NamedTextColor.RED)
-                        .append(msg);
+                        .append(Component.text(" "))
+                        .decoration(TextDecoration.BOLD, true)
+                        .append(msg.decoration(TextDecoration.BOLD, false));
                 audiences.player(p).sendMessage(Identity.nil(), prefix);
             }
         }
