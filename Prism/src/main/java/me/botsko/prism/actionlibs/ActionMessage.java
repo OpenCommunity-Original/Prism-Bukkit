@@ -47,8 +47,8 @@ public class ActionMessage {
      * @return String
      */
     public String getRawMessage() {
-        String format1 = "<prefix> <handlerId> <target> <actor> <extendedInfo> <actorNice> <count>"
-                + " <timeDiff> <location>";
+        String format1 = "<prefix> <handlerId> <target> <actor> <actorNice> <count>"
+                + "<timeDiff> <location>";
         ActionType action = handler.getActionType();
         return PlainComponentSerializer.plain().serialize(getMainMessage(action, format1));
     }
@@ -68,8 +68,6 @@ public class ActionMessage {
                         builder -> getActor((ActionTypeImpl) action, highlight))
                 .replaceFirstText(Pattern.compile("<actor>"),
                         builder -> Component.text().content(action.getName()))
-                .replaceFirstText(Pattern.compile("<extendedInfo>"),
-                        builder -> Component.text().append(getExtendedInfo()))
                 .replaceFirstText(Pattern.compile("<timeDiff>"),
                         builder -> Component.text().append(getTimeDiff()))
                 .replaceFirstText(Pattern.compile("<count>"),
@@ -98,16 +96,13 @@ public class ActionMessage {
      */
     public TextComponent getMessage() {
         String format1 =
-                "<prefix> <index> <target> <description> <actorNice> <extendedInfo> <count> <timeDiff> <actionType>";
-        String format2 = "-<handlerId>- <dateTime> - <location>";
+                "<prefix> <index> <target> <description> <actorNice> <count><timeDiff> <actionType>";
+        String format2 = "<dateTime> | <location>";
         ActionType action = handler.getActionType();
         TextComponent out = getMainMessage(action, format1);
         if (showExtended) {
             out = out.append(Component.newline());
             Component line2 = Component.text().content(format2).build()
-                    .replaceFirstText(Pattern.compile("<handlerId>"),
-                            builder -> Component.text(handler.getId()).toBuilder()
-                                    .color(NamedTextColor.GRAY))
                     .replaceFirstText(Pattern.compile("<dateTime>"),
                             builder -> Component.text()
                                     .content(handler.getDisplayDate() + " " + handler.getDisplayTime()))
@@ -166,7 +161,7 @@ public class ActionMessage {
 
     private TextComponent getCount() {
         if (handler.getAggregateCount() > 1) {
-            return Component.text("x" + handler.getAggregateCount());
+            return Component.text("x" + handler.getAggregateCount() + " ");
         }
         return Component.empty();
     }
