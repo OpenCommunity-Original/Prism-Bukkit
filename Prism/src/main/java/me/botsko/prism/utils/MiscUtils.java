@@ -136,7 +136,8 @@ public class MiscUtils {
             Paste paste = result.getPaste().get();
             String urlpaste = prismWebUrl + paste.getId();
             Prism.messenger.sendMessage(sender,
-                    Prism.messenger.playerSuccess("Successfully pasted results: "
+                    Prism.messenger.playerSuccess(Il8nHelper.getRawMessage("pasted-results")
+                            + " "
                             + urlpaste
                             + paste.getId()).clickEvent(ClickEvent.openUrl(urlpaste)));
         } else {
