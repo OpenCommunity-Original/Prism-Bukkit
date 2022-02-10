@@ -8,7 +8,12 @@ import org.bukkit.entity.Boat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.minecart.*;
+import org.bukkit.entity.minecart.CommandMinecart;
+import org.bukkit.entity.minecart.ExplosiveMinecart;
+import org.bukkit.entity.minecart.HopperMinecart;
+import org.bukkit.entity.minecart.PoweredMinecart;
+import org.bukkit.entity.minecart.SpawnerMinecart;
+import org.bukkit.entity.minecart.StorageMinecart;
 
 public class VehicleAction extends GenericAction {
     private String vehicleName;
@@ -65,6 +70,9 @@ public class VehicleAction extends GenericAction {
     public ChangeResult applyRollback(Player player, PrismParameters parameters, boolean isPreview) {
         Entity vehicle = null;
         switch (vehicleName) {
+            case "command block minecart":
+                vehicle = getWorld().spawn(getLoc(), CommandMinecart.class);
+                break;
             case "powered minecart":
                 vehicle = getWorld().spawn(getLoc(), PoweredMinecart.class);
                 break;

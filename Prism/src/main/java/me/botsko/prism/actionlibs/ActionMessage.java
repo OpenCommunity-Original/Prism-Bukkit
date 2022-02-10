@@ -138,7 +138,7 @@ public class ActionMessage {
 
     private TextComponent getExtendedInfo() {
         if (showExtended && (handler.getMaterial() != Material.AIR)) {
-            return Component.text(handler.getMaterial() + Utilities.dataString(handler.getBlockData()));
+            return Component.text(handler.getMaterial() + Utilities.dataString(handler.getBlockData()) + " ");
         }
         return Component.empty();
     }

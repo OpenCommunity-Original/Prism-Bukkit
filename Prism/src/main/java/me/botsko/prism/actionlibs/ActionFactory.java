@@ -1,6 +1,21 @@
 package me.botsko.prism.actionlibs;
 
-import me.botsko.prism.actions.*;
+import me.botsko.prism.actions.BlockAction;
+import me.botsko.prism.actions.BlockChangeAction;
+import me.botsko.prism.actions.BlockShiftAction;
+import me.botsko.prism.actions.EntityAction;
+import me.botsko.prism.actions.EntityTravelAction;
+import me.botsko.prism.actions.GrowAction;
+import me.botsko.prism.actions.HangingItemAction;
+import me.botsko.prism.actions.ItemStackAction;
+import me.botsko.prism.actions.PlayerAction;
+import me.botsko.prism.actions.PlayerDeathAction;
+import me.botsko.prism.actions.PortalCreateAction;
+import me.botsko.prism.actions.PrismProcessAction;
+import me.botsko.prism.actions.PrismRollbackAction;
+import me.botsko.prism.actions.SignAction;
+import me.botsko.prism.actions.UseAction;
+import me.botsko.prism.actions.VehicleAction;
 import me.botsko.prism.api.actions.Handler;
 import me.botsko.prism.api.actions.PrismProcessType;
 import org.bukkit.Location;
@@ -235,6 +250,37 @@ public class ActionFactory {
      */
     public static Handler createGrow(String actionType, BlockState blockstate, String nonPlayer) {
         final Handler a = createGrow(actionType, blockstate, (OfflinePlayer) null);
+        a.setSourceName(nonPlayer);
+        return a;
+    }
+
+    /**
+     * PortalCreateAction.
+     *
+     * @param actionType the action
+     * @param player     the player
+     */
+    public static Handler createPortal(String actionType, BlockState newBlockState, BlockState oldBlockState, OfflinePlayer player) {
+        final PortalCreateAction a = new PortalCreateAction();
+        a.setActionType(actionType);
+        a.setLocation(newBlockState.getLocation());
+        a.setNewBlock(newBlockState);
+        a.setOldBlock(oldBlockState);
+        a.setPlayer(player);
+        return a;
+    }
+
+    /**
+     * PortalCreateHandler.
+     *
+     * @param actionType type
+     * @param newBlockState new state
+     * @param oldBlockState old state
+     * @param nonPlayer  nonplayer
+     * @return Handler
+     */
+    public static Handler createPortal(String actionType, BlockState newBlockState, BlockState oldBlockState, String nonPlayer) {
+        final Handler a = createPortal(actionType, newBlockState, oldBlockState, (OfflinePlayer) null);
         a.setSourceName(nonPlayer);
         return a;
     }

@@ -2,7 +2,22 @@ package me.botsko.prism.actionlibs;
 
 import me.botsko.prism.Il8nHelper;
 import me.botsko.prism.Prism;
-import me.botsko.prism.actions.*;
+import me.botsko.prism.actions.BlockAction;
+import me.botsko.prism.actions.BlockChangeAction;
+import me.botsko.prism.actions.BlockShiftAction;
+import me.botsko.prism.actions.EntityAction;
+import me.botsko.prism.actions.EntityTravelAction;
+import me.botsko.prism.actions.GrowAction;
+import me.botsko.prism.actions.HangingItemAction;
+import me.botsko.prism.actions.ItemStackAction;
+import me.botsko.prism.actions.PlayerAction;
+import me.botsko.prism.actions.PlayerDeathAction;
+import me.botsko.prism.actions.PortalCreateAction;
+import me.botsko.prism.actions.PrismProcessAction;
+import me.botsko.prism.actions.PrismRollbackAction;
+import me.botsko.prism.actions.SignAction;
+import me.botsko.prism.actions.UseAction;
+import me.botsko.prism.actions.VehicleAction;
 import me.botsko.prism.exceptions.InvalidActionException;
 import me.botsko.prism.utils.TypeUtils;
 import org.bukkit.plugin.Plugin;
@@ -241,6 +256,8 @@ public class ActionRegistry {
                 PlayerAction.class, Il8nHelper.getRawMessage("changed_game_mode")));
         registerAction(new ActionTypeImpl("player-teleport", false, false, false,
                 EntityTravelAction.class, Il8nHelper.getRawMessage("teleported")));
+        registerAction(new ActionTypeImpl("portal-create", true, true, true,
+                PortalCreateAction.class, "created portal"));
         registerAction(new ActionTypeImpl("potion-splash", false, false, false,
                 PlayerAction.class, Il8nHelper.getRawMessage("potion-throw")));
         registerAction(new ActionTypeImpl("prism-drain", false, true, true,

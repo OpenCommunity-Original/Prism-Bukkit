@@ -52,8 +52,8 @@ public class FlagsCommand implements SubHandler {
             Prism.messenger.sendMessage(s, Prism.messenger.playerMsg(
                     Component.text(flag.getUsage().replace("_", "-") + " ")
                             .color(NamedTextColor.LIGHT_PURPLE)
-                            //.append(Component.text(" " + Il8nHelper.getMessage(flag.getDescription())))));
-                            .append(Il8nHelper.getMessage(flag.getDescription()))));
+                            .append(Component.text(" " + Il8nHelper.getRawMessage(flag.getDescription()))
+                                    .color(NamedTextColor.GRAY))));
         }
     }
 }
